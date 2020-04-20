@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>Étudiants</title>
         <link rel="stylesheet" type="text/css" href="assets/style.css"/>
-        <script src="../scripts/Javascript/display_form.js"></script>
+        <script src="../scripts/Javascript/formsStudents.js"></script>
         <script src="../scripts/Javascript/checkConnection.js"></script>
     </head>
 
@@ -28,49 +28,14 @@
             </div>
 
             <div id="formulaire">
-                <!--
                 <form method="post" action="../scripts/PHP/check_connection.php">
                     <label class="input_label" for="input_id">Identifiant</label>
-                    <input type="text" id="input_id" class="input_co" name="input_id"/>
+                    <input type="text" id="input_id" class="input_form" name="input_id"/>
 
                     <label class="input_label" for="input_passwd">Mot de passe</label>
-                    <input type="password" id="input_passwd" class="input_co" name="input_passwd"/>
+                    <input type="password" id="input_passwd" class="input_form" name="input_passwd"/>
 
-                    <input type="button" id="bouton_submit_co" value="Se connecter" onclick="checkConnection();"/>
-                </form>
-                -->
-
-                <form method="post" action="../scripts/check_inscription.php">
-                    <label class="input_label_ins" for="input_id_ins">Identifiant</label>
-                    <input type="text" id="input_id_ins" class="input_ins" name="input_ins_id"/>
-
-                    <label class="input_label_ins" for="input_prenom">Prénom</label>
-                    <input type="text" id="input_prenom" class="input_ins" name="input_prenom"/>
-
-                    <label class="input_label_ins" for="input_nom">Nom</label>
-                    <input type="text" id="input_nom" class="input_ins" name="input_nom"/>
-
-                    <label class="input_label_ins" for="input_mail">Mail</label>
-                    <input type="text" id="input_mail" class="input_ins" name="input_mail"/>
-
-                    <label class="input_label_ins" for="input_tel">Numéro de téléphone</label>
-                    <input type="text" id="input_tel" class="input_ins" name="input_tel"/>
-
-                    <label class="input_label_ins" for="input_adresse">Adresse</label>
-                    <input type="text" id="input_adresse" class="input_ins" name="input_adresse"/>
-
-                    <!-- Modifier les inputs pour la filière et le groupe en liste déroulante.
-                        + Faire fonction JS pour proposer les groupes en fonction des filières choisies.
-                    -->
-
-                    <label class="input_label_ins" for="input_mdp_ins">Mot de passe</label>
-                    <input type="text" id="input_mdp_ins" class="input_ins" name="input_ins_mdp"/>
-
-                    <label class="input_label_ins" for="input_mdp2_ins">Entrez de nouveau le mot de passe</label>
-                    <input type="text" id="input_mdp2_ins" class="input_ins" name="input_ins_mdp2"/>
-
-
-
+                    <input type="button" id="bouton_submit_form" value="Se connecter" onclick="checkConnection();"/>
                 </form>
             </div>
 

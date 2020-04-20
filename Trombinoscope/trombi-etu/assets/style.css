@@ -73,24 +73,25 @@ body{
 
 #formulaire{
     margin-left: 0;
+    margin-bottom: 5%;
 }
 
 .input_label{
     display: block;
     font-size: 115%;
     margin-left: 32.5%;
-    margin-top: 3%;
+    margin-top: 4%;
 }
 
-.input_co{
+.input_form{
     display: block;
     border: none;
     border-bottom: black 1px solid;
-    margin-left: 33.5%;
+    margin-left: 32.5%;
     width: 35%;
 }
 
-#bouton_submit_co{
+#bouton_submit_form{
     border: black 1px solid;
     background-color: #74cb34;
     margin-top: 5%;
@@ -100,8 +101,6 @@ body{
     padding-top: 1%;
     padding-bottom: 1%;
 }
-
-
 
 
 
