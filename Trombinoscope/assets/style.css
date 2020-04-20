@@ -41,7 +41,14 @@ body{
     display: inline-block;
 }
 
-#logo_site_etudiant img{
+#header_etudiants a{
+    text-decoration: none;
+}
+
+#logo_site_etudiant{
+    margin-top: 0.5%;
+    margin-bottom: -0.5%;
+    margin-right: 1%;
     width: 3%;
 }
 

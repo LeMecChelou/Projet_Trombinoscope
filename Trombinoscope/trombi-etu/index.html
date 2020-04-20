@@ -4,18 +4,20 @@
         <meta charset="UTF-8">
         <title>Étudiants</title>
         <link rel="stylesheet" type="text/css" href="../assets/style.css"/>
-        <script src="./scripts/display_form.js"></script>
+        <script src="../scripts/Javascript/display_form.js"></script>
+        <script src="../scripts/Javascript/checkConnection.js"></script>
     </head>
 
     <body>
         <header id="header_etudiants">
-            <a href="../index.html" id="logo_site_etudiant">
-                <img src="../assets/logo_site.png" alt="Logo"/>
+            <a href="../index.html">
+                <img id="logo_site_etudiant" src="../assets/logo_site.png" alt="Logo"/>
             </a>
             <h1>Trombinoscope Étudiant</h1>
         </header>
 
         <div id="conteneur_choix_etu">
+
             <div id="boutons_choix_etu">
                 <div id="bouton_etu_droit">
                     <button class="bouton_choix_etu" id="choix_etu_actif" onclick="connection_priority();">Connexion</button>
@@ -24,15 +26,19 @@
                     <button class="bouton_choix_etu" id="choix_etu_inactif" onclick="inscription_priority();">Inscription</button>
                 </div>
             </div>
+
             <div id="formulaire_etu">
-                <form method="POST" action="../scripts/check_connection.php">
+                <form method="POST" action="../scripts/PHP/check_connection.php">
                     <label class="input" for="input_id">Identifiant</label>
                     <input type="text" id="input_id" class="input" name="input_id"/>
 
                     <label class="input" for="input_passwd">Mot de passe</label>
                     <input type="password" id="input_passwd" class="input" name="input_passwd"/>
+
+                    <input type="button" value="Se connecter" onclick="checkConnection();"/>
                 </form>
             </div>
+
         </div>
 
     </body>
