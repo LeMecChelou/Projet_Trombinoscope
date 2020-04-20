@@ -1,4 +1,5 @@
 body{
+    font-family: Calibri, serif;
     margin: 0;
 }
 
@@ -13,7 +14,7 @@ body{
 .bouton_choix_sites{
     display: inline-block;
     text-align: center;
-    background-color: #99ccff;
+    background-color: #74cb34;
     width: 100px;
     padding: 4% 4% 4% 4%;
     margin-right: 5%;
@@ -22,3 +23,59 @@ body{
 .bouton_choix_sites a{
     text-decoration: none;
 }
+
+
+/* ------------------------------------ */
+/*          Site des étudiants          */
+/* ------------------------------------ */
+#header_etudiants{
+    background-color: #74cb34;
+    margin-top: 0;
+    padding-left: 1%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+}
+
+#conteneur_choix_etu{
+    margin-top: 5%;
+    margin-left: 22.5%;
+}
+
+#choix_etu_actif{
+    font-size: 115%;
+    background-color: #74cb34;
+    border: black 1px solid;
+    width: 35%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+#choix_etu_inactif{
+    font-size: 115%;
+    background-color: #cccccc;
+    border: black 1px solid;
+    width: 35%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

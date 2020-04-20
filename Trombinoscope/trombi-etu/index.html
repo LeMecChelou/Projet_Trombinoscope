@@ -1,12 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <title>Étudiants</title>
         <link rel="stylesheet" type="text/css" href="../assets/style.css"/>
+        <script src="./scripts/display_form.js"></script>
     </head>
 
     <body>
+        <header id="header_etudiants">
+            <h1>Trombinoscope étudiant</h1>
+        </header>
+
+        <div id="conteneur_choix_etu">
+            <button class="bouton_choix_etu" id="choix_etu_actif" onclick="connection_priority();">Connexion</button>
+            <button class="bouton_choix_etu" id="choix_etu_inactif" onclick="inscription_priority();">Inscription</button>
+
+            <div id="formulaire_etu">
+
+            </div>
+        </div>
 
     </body>
 </html>
