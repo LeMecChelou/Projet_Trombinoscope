@@ -3,39 +3,74 @@
     <head>
         <meta charset="UTF-8">
         <title>Étudiants</title>
-        <link rel="stylesheet" type="text/css" href="../assets/style.css"/>
+        <link rel="stylesheet" type="text/css" href="assets/style.css"/>
         <script src="../scripts/Javascript/display_form.js"></script>
         <script src="../scripts/Javascript/checkConnection.js"></script>
     </head>
 
     <body>
-        <header id="header_etudiants">
+        <header id="header">
             <a href="../index.html">
-                <img id="logo_site_etudiant" src="../assets/logo_site.png" alt="Logo"/>
+                <img id="logo_site" src="assets/logo_site.png" alt="Logo"/>
             </a>
             <h1>Trombinoscope Étudiant</h1>
         </header>
 
-        <div id="conteneur_choix_etu">
+        <div id="conteneur_choix">
 
-            <div id="boutons_choix_etu">
-                <div id="bouton_etu_droit">
-                    <button class="bouton_choix_etu" id="choix_etu_actif" onclick="connection_priority();">Connexion</button>
+            <div id="boutons_choix">
+                <div id="bouton_droit">
+                    <button class="bouton_choix" id="choix_actif" onclick="connection_priority();">Connexion</button>
                 </div>
-                <div id="bouton_etu_gauche">
-                    <button class="bouton_choix_etu" id="choix_etu_inactif" onclick="inscription_priority();">Inscription</button>
+                <div id="bouton_gauche">
+                    <button class="bouton_choix" id="choix_inactif" onclick="inscription_priority();">Inscription</button>
                 </div>
             </div>
 
-            <div id="formulaire_etu">
-                <form method="POST" action="../scripts/PHP/check_connection.php">
-                    <label class="input" for="input_id">Identifiant</label>
-                    <input type="text" id="input_id" class="input" name="input_id"/>
+            <div id="formulaire">
+                <!--
+                <form method="post" action="../scripts/PHP/check_connection.php">
+                    <label class="input_label" for="input_id">Identifiant</label>
+                    <input type="text" id="input_id" class="input_co" name="input_id"/>
 
-                    <label class="input" for="input_passwd">Mot de passe</label>
-                    <input type="password" id="input_passwd" class="input" name="input_passwd"/>
+                    <label class="input_label" for="input_passwd">Mot de passe</label>
+                    <input type="password" id="input_passwd" class="input_co" name="input_passwd"/>
 
-                    <input type="button" value="Se connecter" onclick="checkConnection();"/>
+                    <input type="button" id="bouton_submit_co" value="Se connecter" onclick="checkConnection();"/>
+                </form>
+                -->
+
+                <form method="post" action="../scripts/check_inscription.php">
+                    <label class="input_label_ins" for="input_id_ins">Identifiant</label>
+                    <input type="text" id="input_id_ins" class="input_ins" name="input_ins_id"/>
+
+                    <label class="input_label_ins" for="input_prenom">Prénom</label>
+                    <input type="text" id="input_prenom" class="input_ins" name="input_prenom"/>
+
+                    <label class="input_label_ins" for="input_nom">Nom</label>
+                    <input type="text" id="input_nom" class="input_ins" name="input_nom"/>
+
+                    <label class="input_label_ins" for="input_mail">Mail</label>
+                    <input type="text" id="input_mail" class="input_ins" name="input_mail"/>
+
+                    <label class="input_label_ins" for="input_tel">Numéro de téléphone</label>
+                    <input type="text" id="input_tel" class="input_ins" name="input_tel"/>
+
+                    <label class="input_label_ins" for="input_adresse">Adresse</label>
+                    <input type="text" id="input_adresse" class="input_ins" name="input_adresse"/>
+
+                    <!-- Modifier les inputs pour la filière et le groupe en liste déroulante.
+                        + Faire fonction JS pour proposer les groupes en fonction des filières choisies.
+                    -->
+
+                    <label class="input_label_ins" for="input_mdp_ins">Mot de passe</label>
+                    <input type="text" id="input_mdp_ins" class="input_ins" name="input_ins_mdp"/>
+
+                    <label class="input_label_ins" for="input_mdp2_ins">Entrez de nouveau le mot de passe</label>
+                    <input type="text" id="input_mdp2_ins" class="input_ins" name="input_ins_mdp2"/>
+
+
+
                 </form>
             </div>
 

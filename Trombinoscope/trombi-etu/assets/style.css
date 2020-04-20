@@ -1,35 +1,14 @@
 body{
     font-family: Calibri, serif;
-    background-image: url("./background_site.png");
+    background-image: url("background_site.png");
     margin: 0;
-}
-
-/* --------------------------------- */
-/*          Page principale          */
-/* --------------------------------- */
-#conteneur_choix_site{
-    margin-top: 15%;
-    margin-left: 37%;
-}
-
-.bouton_choix_sites{
-    display: inline-block;
-    text-align: center;
-    background-color: #74cb34;
-    width: 100px;
-    padding: 4% 4% 4% 4%;
-    margin-right: 5%;
-}
-
-.bouton_choix_sites a{
-    text-decoration: none;
 }
 
 
 /* ------------------------------------ */
 /*          Site des étudiants          */
 /* ------------------------------------ */
-#header_etudiants{
+#header{
     background-color: #74cb34;
     margin-top: 0;
     padding-left: 1%;
@@ -37,44 +16,44 @@ body{
     padding-bottom: 0.5%;
 }
 
-#header_etudiants h1{
+#header h1{
     display: inline-block;
 }
 
-#header_etudiants a{
+#header a{
     text-decoration: none;
 }
 
-#logo_site_etudiant{
+#logo_site{
     margin-top: 0.5%;
     margin-bottom: -0.5%;
     margin-right: 1%;
     width: 3%;
 }
 
-#conteneur_choix_etu{
+#conteneur_choix{
     background-color: white;
     margin-top: 5%;
     margin-left: 25%;
     width: 50%;
 }
 
-#boutons_choix_etu{
+#boutons_choix{
     display:flex;
 }
 
-#bouton_etu_droit{
+#bouton_droit{
     display: inline-block;
     width: 50%;
 }
 
-#bouton_etu_gauche{
+#bouton_gauche{
     display: inline-block;
     width: 50%;
     margin-right: 0;
 }
 
-#choix_etu_actif{
+#choix_actif{
     font-size: 115%;
     background-color: #74cb34;
     border: black 1px solid;
@@ -83,7 +62,7 @@ body{
     padding-bottom: 3%;
 }
 
-#choix_etu_inactif{
+#choix_inactif{
     font-size: 115%;
     background-color: #cccccc;
     border: black 1px solid;
@@ -92,13 +71,34 @@ body{
     padding-bottom: 3%;
 }
 
-#formulaire_etu{
+#formulaire{
     margin-left: 0;
 }
 
-.input{
+.input_label{
     display: block;
-    margin-left: 2%;
+    font-size: 115%;
+    margin-left: 32.5%;
+    margin-top: 3%;
+}
+
+.input_co{
+    display: block;
+    border: none;
+    border-bottom: black 1px solid;
+    margin-left: 33.5%;
+    width: 35%;
+}
+
+#bouton_submit_co{
+    border: black 1px solid;
+    background-color: #74cb34;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    margin-left: 40%;
+    width: 20%;
+    padding-top: 1%;
+    padding-bottom: 1%;
 }
 
 
