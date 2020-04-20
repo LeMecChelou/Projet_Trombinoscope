@@ -1,0 +1,24 @@
+body{
+    margin: 0;
+}
+
+/* --------------------------------- */
+/*          Page principale          */
+/* --------------------------------- */
+#conteneur_choix_site{
+    margin-top: 15%;
+    margin-left: 37%;
+}
+
+.bouton_choix_sites{
+    display: inline-block;
+    text-align: center;
+    background-color: #99ccff;
+    width: 100px;
+    padding: 4% 4% 4% 4%;
+    margin-right: 5%;
+}
+
+.bouton_choix_sites a{
+    text-decoration: none;
+}
