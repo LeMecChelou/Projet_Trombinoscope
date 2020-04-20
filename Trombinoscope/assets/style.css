@@ -37,29 +37,56 @@ body{
     padding-bottom: 0.5%;
 }
 
+#header_etudiants h1{
+    display: inline-block;
+}
+
+#logo_site_etudiant img{
+    width: 3%;
+}
+
 #conteneur_choix_etu{
+    background-color: white;
     margin-top: 5%;
-    margin-left: 22.5%;
+    margin-left: 25%;
+    width: 50%;
+}
+
+#boutons_choix_etu{
+    display:flex;
+}
+
+#bouton_etu_droit{
+    display: inline-block;
+    width: 50%;
+}
+
+#bouton_etu_gauche{
+    display: inline-block;
+    width: 50%;
+    margin-right: 0;
 }
 
 #choix_etu_actif{
     font-size: 115%;
     background-color: #74cb34;
     border: black 1px solid;
-    width: 35%;
-    margin-right: -1%;
-    padding-top: 1%;
-    padding-bottom: 1%;
+    width: 100%;
+    padding-top: 3%;
+    padding-bottom: 3%;
 }
 
 #choix_etu_inactif{
     font-size: 115%;
     background-color: #cccccc;
     border: black 1px solid;
-    width: 35%;
-    margin-right: -1%;
-    padding-top: 1%;
-    padding-bottom: 1%;
+    width: 100%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+#formulaire_etu{
+    margin-left: 0;
 }
 
 .input{
