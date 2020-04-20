@@ -7,7 +7,7 @@ function connection_priority(){
         ins.id = "choix_etu_inactif";
 
         let formulaire = document.getElementById("formulaire_etu");
-        formulaire.innerHTML = ";"
+        formulaire.innerHTML = "";
     }
 }
 
@@ -21,5 +21,6 @@ function inscription_priority(){
         ins.id = "choix_etu_actif";
 
         let formulaire = document.getElementById("formulaire_etu");
+        formulaire.innerHTML = "";
     }
 }

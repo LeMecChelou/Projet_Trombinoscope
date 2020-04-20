@@ -17,7 +17,13 @@
             <button class="bouton_choix_etu" id="choix_etu_inactif" onclick="inscription_priority();">Inscription</button>
 
             <div id="formulaire_etu">
+                <form method="POST" action="../scripts/check_connection.php">
+                    <label class="input" for="input_id">Identifiant</label>
+                    <input type="text" id="input_id" class="input" name="input_id"/>
 
+                    <label class="input" for="input_passwd">Mot de passe</label>
+                    <input type="password" id="input_passwd" class="input" name="input_passwd"/>
+                </form>
             </div>
         </div>
 
