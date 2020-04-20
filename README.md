@@ -7,3 +7,6 @@ Une pour les étudiants, l'autre pour l'administration/le corps enseignant.
 La page principale est située, avec la partie administration, sur un domaine et le site pour les étudiants sur un autre domaine.
 
 Le fichier ./Trombinoscope/index.html et le dossier trombi-admin sont donc sur le site benjamin-guirlet.yo.fr et le site trombi-etu.alwaysdata.net contient le site des étudiants.
+
+Les scripts communs aux deux pages sont situés dans le dossier Trombinoscope/scripts.
+Sinon, chaque site à son dossier scripts pour garder leurs scripts propres à eux même.
