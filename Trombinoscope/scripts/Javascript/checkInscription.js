@@ -45,10 +45,10 @@ function checkInscription(){
             let input = document.createElement('input');
             input.setAttribute('name', "filename");
             if (div_form === "formulaire_etudiant"){
-                input.setAttribute('value', "./files/etudiants.csv");
+                input.setAttribute('value', "../../trombi-etu/files/etudiants.csv");
             }
             else{
-                input.setAttribute('value', "./files/administration.csv");
+                input.setAttribute('value', "../../trombi-admin/files/administration.csv");
             }
             input.setAttribute('type', 'hidden');
             formulaire.appendChild(input);

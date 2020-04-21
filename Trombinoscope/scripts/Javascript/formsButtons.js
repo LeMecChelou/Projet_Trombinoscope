@@ -7,6 +7,8 @@ function connection_priority(){
         ins.id = "choix_inactif";
 
         let formulaire = document.getElementById("formulaire");
+        formulaire.action = "../scripts/PHP/check_connection.php";
+
         formulaire.innerHTML = "<form method='post' action='../scripts/PHP/check_connection.php'>\n" +
             "                    <label class='input_label' for='input_id'>Identifiant</label>\n" +
             "                    <input type='text' id='input_id' class='input_form' name='input_id'/>\n" +
@@ -29,7 +31,9 @@ function inscription_priority(){
         ins.id = "choix_actif";
 
         let formulaire = document.getElementById("formulaire");
+        formulaire.action = "../scripts/PHP/check_inscription.php";
         let div_form = document.getElementById("div_formulaire");
+
         formulaire.innerHTML = "<form method='post' id='formulaire_ins' action='../scripts/PHP/check_inscription.php'>\n" +
             "                    <label class='input_label' for='input_id'>Identifiant</label>\n" +
             "                    <input type='text' id='input_id' class='input_form' name='input_id'/>\n" +
