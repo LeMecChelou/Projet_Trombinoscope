@@ -30,8 +30,8 @@ function inscription_priority(){
 
         let formulaire = document.getElementById("formulaire");
         formulaire.innerHTML = "<form method=\"POST\" enctype='multipart/form-data' id='formulaire_ins' action=\"../scripts/PHP/check_inscription.php\">\n" +
-            "                    <label class=\"input_label\" for=\"input_id_ins\">Identifiant</label>\n" +
-            "                    <input type=\"text\" id=\"input_id\" class=\"input_form\" name=\"input_ins_id\"/>\n" +
+            "                    <label class=\"input_label\" for=\"input_id\">Identifiant</label>\n" +
+            "                    <input type=\"text\" id=\"input_id\" class=\"input_form\" name=\"input_id\"/>\n" +
             "\n" +
             "                    <label class=\"input_label\" for=\"input_prenom\">Prénom</label>\n" +
             "                    <input type=\"text\" id=\"input_prenom\" class=\"input_form\" name=\"input_prenom\"/>\n" +
@@ -48,31 +48,32 @@ function inscription_priority(){
             "                    <label class=\"input_label\" for=\"input_adresse\">Adresse</label>\n" +
             "                    <input type=\"text\" id=\"input_adresse\" class=\"input_form\" name=\"input_adresse\"/>\n" +
             "\n" +
-            "                    <label class=\"input_label\" for=\"input_mdp_ins\">Mot de passe</label>\n" +
-            "                    <input type=\"password\" id=\"input_mdp_ins\" class=\"input_form\" name=\"input_ins_mdp\"/>\n" +
+            "                    <label class=\"input_label\" for=\"input_mdp\">Mot de passe</label>\n" +
+            "                    <input type=\"password\" id=\"input_mdp\" class=\"input_form\" name=\"input_mdp\"/>\n" +
             "\n" +
-            "                    <label class=\"input_label\" for=\"input_mdp2_ins\">Entrez de nouveau le mot de passe</label>\n" +
-            "                    <input type=\"password\" id=\"input_mdp2_ins\" class=\"input_form\" name=\"input_ins_mdp2\"/>\n" +
-            "\n" +
-            "                    <label class=\"input_label\" for=\"liste_filieres\">Choix de la filère: </label>\n" +
-            "                    <select id=\"liste_filieres\" class=\"input_form\" onchange=\"loadGroups();\">\n" +
-            "                        <option value=\"\">...</option>\n" +
-            "                        <option value=\"L1-MIPI\">L1-MIPI</option>\n" +
-            "                        <option value=\"L2-MI\">L2-MI</option>\n" +
-            "                        <option value=\"L3-I\">L3-I</option>\n" +
-            "                        <option value=\"LP RS\">LP RS</option>\n" +
-            "                        <option value=\"LPI-RIWS\">LPI-RIWS</option>\n" +
-            "                    </select>\n" +
-            "\n" +
-            "                    <label class=\"input_label\" for=\"liste_groupes\">Choix du groupe: </label>\n" +
-            "                    <select id=\"liste_groupes\" class=\"input_form\">\n" +
-            "                       <option value=''>...</option>\n" +
-            "                    </select>\n" +
-            "\n" +
-            "                    <label class=\"input_label\" for=\"input_img_profil\">Image de profil (200x200):</label>\n" +
-            "                    <input type=\"file\" id=\"input_img_profil\" class=\"input_form_img\" name=\"input_image\"/>\n" +
-            "\n" +
-            "                    <p id='erreur_inscription'></p>\n" +
+            "                    <label class=\"input_label\" for=\"input_mdp2\">Entrez de nouveau le mot de passe</label>\n" +
+            "                    <input type=\"password\" id=\"input_mdp2\" class=\"input_form\" name=\"input_mdp2\"/>\n";
+
+        // Ne s'active que si c'est le formulaire pour les étudiants.
+        if (formulaire.className === "formulaire_etudiant"){
+            formulaire.innerHTML += "\n" +
+                "                    <label class=\"input_label\" for=\"liste_filieres\">Choix de la filère: </label>\n" +
+                "                    <select id=\"liste_filieres\" class=\"input_form\" name='input_filiere' onchange=\"loadGroups();\">\n" +
+                "                        <option value=\"\">...</option>\n" +
+                "                        <option value=\"L1-MIPI\">L1-MIPI</option>\n" +
+                "                        <option value=\"L2-MI\">L2-MI</option>\n" +
+                "                        <option value=\"L3-I\">L3-I</option>\n" +
+                "                        <option value=\"LP RS\">LP RS</option>\n" +
+                "                        <option value=\"LPI-RIWS\">LPI-RIWS</option>\n" +
+                "                    </select>\n" +
+                "\n" +
+                "                    <label class=\"input_label\" for=\"liste_groupes\">Choix du groupe: </label>\n" +
+                "                    <select id=\"liste_groupes\" class=\"input_form\" name='input_groupe'>\n" +
+                "                       <option value=''>...</option>\n" +
+                "                    </select>\n";
+        }
+
+        formulaire.innerHTML += "<p id='erreur_inscription'></p>\n" +
             "                    <input type=\"button\" id=\"bouton_submit_form\" value=\"Valider\" onclick=\"checkInscription();\"/>\n" +
             "                </form>";
     }
