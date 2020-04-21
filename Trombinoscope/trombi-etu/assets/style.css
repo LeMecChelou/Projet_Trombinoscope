@@ -102,6 +102,19 @@ body{
     padding-bottom: 1%;
 }
 
+.input_form_img{
+    display: block;
+    margin-left: 32.5%;
+    width: 35%;
+}
+
+
+#erreur_inscription{
+    display: block;
+    margin-left: 32.5%;
+    width: 35%;
+    color: red;
+}
 
 
 

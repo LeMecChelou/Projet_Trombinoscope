@@ -29,7 +29,7 @@ function inscription_priority(){
         ins.id = "choix_actif";
 
         let formulaire = document.getElementById("formulaire");
-        formulaire.innerHTML = "<form method=\"post\" action=\"../scripts/check_inscription.php\">\n" +
+        formulaire.innerHTML = "<form method=\"POST\" enctype='multipart/form-data' id='formulaire_ins' action=\"../scripts/PHP/check_inscription.php\">\n" +
             "                    <label class=\"input_label\" for=\"input_id_ins\">Identifiant</label>\n" +
             "                    <input type=\"text\" id=\"input_id\" class=\"input_form\" name=\"input_ins_id\"/>\n" +
             "\n" +
@@ -47,10 +47,6 @@ function inscription_priority(){
             "\n" +
             "                    <label class=\"input_label\" for=\"input_adresse\">Adresse</label>\n" +
             "                    <input type=\"text\" id=\"input_adresse\" class=\"input_form\" name=\"input_adresse\"/>\n" +
-            "\n" +
-            "                    <!-- Modifier les inputs pour la filière et le groupe en liste déroulante.\n" +
-            "                        + Faire fonction JS pour proposer les groupes en fonction des filières choisies.\n" +
-            "                    -->\n" +
             "\n" +
             "                    <label class=\"input_label\" for=\"input_mdp_ins\">Mot de passe</label>\n" +
             "                    <input type=\"password\" id=\"input_mdp_ins\" class=\"input_form\" name=\"input_ins_mdp\"/>\n" +
@@ -72,7 +68,12 @@ function inscription_priority(){
             "                    <select id=\"liste_groupes\" class=\"input_form\">\n" +
             "                       <option value=''>...</option>\n" +
             "                    </select>\n" +
-            "                    <input type=\"button\" id=\"bouton_submit_form\" value=\"Valider\" onclick=\"\"/>\n" +
+            "\n" +
+            "                    <label class=\"input_label\" for=\"input_img_profil\">Image de profil (200x200):</label>\n" +
+            "                    <input type=\"file\" id=\"input_img_profil\" class=\"input_form_img\" name=\"input_image\"/>\n" +
+            "\n" +
+            "                    <p id='erreur_inscription'></p>\n" +
+            "                    <input type=\"button\" id=\"bouton_submit_form\" value=\"Valider\" onclick=\"checkInscription();\"/>\n" +
             "                </form>";
     }
 }
