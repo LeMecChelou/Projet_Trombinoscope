@@ -1,5 +1,5 @@
 function checkInscription(){
-    let div_form = document.getElementById("formulaire").className;
+    let div_form = document.getElementById("div_formulaire").className
 
     let id = document.getElementById("input_id").value;
     let prenom = document.getElementById("input_prenom").value;
@@ -15,12 +15,12 @@ function checkInscription(){
         filières et de groupes.
     */
     if (div_form === "formulaire_etudiant"){
-        let filiere = document.getElementById("liste_filieres").value;
-        let groupe = document.getElementById("liste_groupes").value;
+        var filiere = document.getElementById("liste_filieres").value;
+        var groupe = document.getElementById("liste_groupes").value;
     }
 
     let erreur = document.getElementById("erreur_inscription");
-    let formulaire = document.getElementById("formulaire_ins");
+    let formulaire = document.getElementById("formulaire");
 
     if (id === "" || prenom === "" || nom === "" || mail === "" || tel === "" || adresse === "") {
         if (div_form === "formulaire_etudiant"){
@@ -51,8 +51,8 @@ function checkInscription(){
                 input.setAttribute('value', "./files/administration.csv");
             }
             input.setAttribute('type', 'hidden');
-
             formulaire.appendChild(input);
+
             formulaire.submit();
         }
     }

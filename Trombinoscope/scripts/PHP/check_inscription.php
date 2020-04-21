@@ -6,9 +6,7 @@
         # ID;PRENOM;NOM;FILIERE;GROUPE;MAIL;TELEPHONE;ADRESSE;MDP;<SI IMAGE -> 'LINK' ELSE -> None
         $compte = $post['input_id'] . ";" . $post['input_prenom'] . ";" . $post['input_nom'] . ";" . ";" . $post['input_mail'] . ";" . $post['input_tel'] . ";" . $post['input_adresse'] . ";" . $mdp . ";None\n";
 
-        foreach ($post as $var){
-            echo $var . "\n";
-        }
+        var_dump($_POST);
 
         # file_put_contents($post['filename'], $compte, FILE_APPEND);
     }

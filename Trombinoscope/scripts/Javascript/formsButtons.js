@@ -7,14 +7,14 @@ function connection_priority(){
         ins.id = "choix_inactif";
 
         let formulaire = document.getElementById("formulaire");
-        formulaire.innerHTML = "<form method=\"post\" action=\"../scripts/PHP/check_connection.php\">\n" +
-            "                    <label class=\"input_label\" for=\"input_id\">Identifiant</label>\n" +
-            "                    <input type=\"text\" id=\"input_id\" class=\"input_form\" name=\"input_id\"/>\n" +
+        formulaire.innerHTML = "<form method='post' action='../scripts/PHP/check_connection.php'>\n" +
+            "                    <label class='input_label' for='input_id'>Identifiant</label>\n" +
+            "                    <input type='text' id='input_id' class='input_form' name='input_id'/>\n" +
             "\n" +
-            "                    <label class=\"input_label\" for=\"input_passwd\">Mot de passe</label>\n" +
-            "                    <input type=\"password\" id=\"input_passwd\" class=\"input_form\" name=\"input_passwd\"/>\n" +
+            "                    <label class='input_label' for='input_passwd'>Mot de passe</label>\n" +
+            "                    <input type='password' id='input_passwd' class='input_form' name='input_passwd'/>\n" +
             "\n" +
-            "                    <input type=\"button\" id=\"bouton_submit_form\" value=\"Se connecter\" onclick=\"checkConnection();\"/>\n" +
+            "                    <input type='button' id='bouton_submit_form' value='Se connecter' onclick='checkConnection();'/>\n" +
             "                </form>";
     }
 }
@@ -29,52 +29,51 @@ function inscription_priority(){
         ins.id = "choix_actif";
 
         let formulaire = document.getElementById("formulaire");
-        formulaire.innerHTML = "<form method=\"POST\" enctype='multipart/form-data' id='formulaire_ins' action=\"../scripts/PHP/check_inscription.php\">\n" +
-            "                    <label class=\"input_label\" for=\"input_id\">Identifiant</label>\n" +
-            "                    <input type=\"text\" id=\"input_id\" class=\"input_form\" name=\"input_id\"/>\n" +
+        let div_form = document.getElementById("div_formulaire");
+        formulaire.innerHTML = "<form method='post' id='formulaire_ins' action='../scripts/PHP/check_inscription.php'>\n" +
+            "                    <label class='input_label' for='input_id'>Identifiant</label>\n" +
+            "                    <input type='text' id='input_id' class='input_form' name='input_id'/>\n" +
             "\n" +
-            "                    <label class=\"input_label\" for=\"input_prenom\">Prénom</label>\n" +
-            "                    <input type=\"text\" id=\"input_prenom\" class=\"input_form\" name=\"input_prenom\"/>\n" +
+            "                    <label class='input_label' for='input_prenom'>Prénom</label>\n" +
+            "                    <input type='text' id='input_prenom' class='input_form' name='input_prenom'/>\n" +
             "\n" +
-            "                    <label class=\"input_label\" for=\"input_nom\">Nom</label>\n" +
-            "                    <input type=\"text\" id=\"input_nom\" class=\"input_form\" name=\"input_nom\"/>\n" +
+            "                    <label class='input_label' for='input_nom'>Nom</label>\n" +
+            "                    <input type='text' id='input_nom' class='input_form' name='input_nom'/>\n" +
             "\n" +
-            "                    <label class=\"input_label\" for=\"input_mail\">Mail</label>\n" +
-            "                    <input type=\"text\" id=\"input_mail\" class=\"input_form\" name=\"input_mail\"/>\n" +
+            "                    <label class='input_label' for='input_mail'>Mail</label>\n" +
+            "                    <input type='text' id='input_mail' class='input_form' name='input_mail'/>\n" +
             "\n" +
-            "                    <label class=\"input_label\" for=\"input_tel\">Numéro de téléphone</label>\n" +
-            "                    <input type=\"text\" id=\"input_tel\" class=\"input_form\" name=\"input_tel\"/>\n" +
+            "                    <label class='input_label' for='input_tel'>Numéro de téléphone</label>\n" +
+            "                    <input type='text' id='input_tel' class='input_form' name='input_tel'/>\n" +
             "\n" +
-            "                    <label class=\"input_label\" for=\"input_adresse\">Adresse</label>\n" +
-            "                    <input type=\"text\" id=\"input_adresse\" class=\"input_form\" name=\"input_adresse\"/>\n" +
+            "                    <label class='input_label' for='input_adresse'>Adresse</label>\n" +
+            "                    <input type='text' id='input_adresse' class='input_form' name='input_adresse'/>\n" +
             "\n" +
-            "                    <label class=\"input_label\" for=\"input_mdp\">Mot de passe</label>\n" +
-            "                    <input type=\"password\" id=\"input_mdp\" class=\"input_form\" name=\"input_mdp\"/>\n" +
+            "                    <label class='input_label' for='input_mdp'>Mot de passe</label>\n" +
+            "                    <input type='password' id='input_mdp' class='input_form' name='input_mdp'/>\n" +
             "\n" +
-            "                    <label class=\"input_label\" for=\"input_mdp2\">Entrez de nouveau le mot de passe</label>\n" +
-            "                    <input type=\"password\" id=\"input_mdp2\" class=\"input_form\" name=\"input_mdp2\"/>\n";
+            "                    <label class='input_label' for='input_mdp2'>Entrez de nouveau le mot de passe</label>\n" +
+            "                    <input type='password' id='input_mdp2' class='input_form' name='input_mdp2'/>\n";
 
         // Ne s'active que si c'est le formulaire pour les étudiants.
-        if (formulaire.className === "formulaire_etudiant"){
-            formulaire.innerHTML += "\n" +
-                "                    <label class=\"input_label\" for=\"liste_filieres\">Choix de la filère: </label>\n" +
-                "                    <select id=\"liste_filieres\" class=\"input_form\" name='input_filiere' onchange=\"loadGroups();\">\n" +
-                "                        <option value=\"\">...</option>\n" +
-                "                        <option value=\"L1-MIPI\">L1-MIPI</option>\n" +
-                "                        <option value=\"L2-MI\">L2-MI</option>\n" +
-                "                        <option value=\"L3-I\">L3-I</option>\n" +
-                "                        <option value=\"LP RS\">LP RS</option>\n" +
-                "                        <option value=\"LPI-RIWS\">LPI-RIWS</option>\n" +
-                "                    </select>\n" +
-                "\n" +
-                "                    <label class=\"input_label\" for=\"liste_groupes\">Choix du groupe: </label>\n" +
-                "                    <select id=\"liste_groupes\" class=\"input_form\" name='input_groupe'>\n" +
-                "                       <option value=''>...</option>\n" +
-                "                    </select>\n";
+        if (div_form.className === "formulaire_etudiant"){
+            formulaire.innerHTML += "<label class='input_label' for='liste_filieres'>Choix de la filère: </label>\n" +
+                "                    <select id='liste_filieres' class='input_form' name='input_filiere' onchange=\"loadGroups();\">\n" +
+                "                        <option value=''>...</option>\n" +
+                "                        <option value='L1-MIPI'>L1-MIPI</option>\n" +
+                "                        <option value='L2-MI'>L2-MI</option>\n" +
+                "                        <option value='L3-I'>L3-I</option>\n" +
+                "                        <option value='LP RS'>LP RS</option>\n" +
+                "                        <option value='LPI-RIWS'>LPI-RIWS</option>\n" +
+                "                    </select>" +
+                "                    <label class='input_label' for='liste_groupes'>Choix du groupe: </label>\n" +
+                "                    <select id='liste_groupes' class='input_form' name='input_groupe'>\n" +
+                "                        <option value=''>...</option>\n" +
+                "                    </select>";
         }
 
         formulaire.innerHTML += "<p id='erreur_inscription'></p>\n" +
-            "                    <input type=\"button\" id=\"bouton_submit_form\" value=\"Valider\" onclick=\"checkInscription();\"/>\n" +
+            "                    <input type='button' id='bouton_submit_form' value='Valider' onclick='checkInscription();'/>\n" +
             "                </form>";
     }
 }

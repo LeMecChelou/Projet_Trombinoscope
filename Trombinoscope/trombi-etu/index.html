@@ -29,8 +29,9 @@
                 </div>
             </div>
 
-            <div id="formulaire" class="formulaire_etudiant">
-                <form method="post" action="../scripts/PHP/check_connection.php">
+            <div id="div_formulaire" class="formulaire_etudiant">
+                <form id="formulaire" enctype="multipart/form-data" method="post" action="../scripts/PHP/check_connection.php">
+
                     <label class="input_label" for="input_id">Identifiant</label>
                     <input type="text" id="input_id" class="input_form" name="input_id"/>
 

@@ -1,5 +1,5 @@
 function checkConnection() {
-    /* Regarder si tout les champs sont bien remplis. */
-
+    let form = document.getElementById("formulaire");
+    form.submit();
     console.log("Test")
 }
