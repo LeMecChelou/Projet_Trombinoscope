@@ -45,6 +45,7 @@ function checkInscription(){
             // Donne l'emplacement du fichier en fonction du type de la personne (Etudiant. <-> Administration).
             let chemin = document.createElement('input');
             chemin.setAttribute('name', "filename");
+
             if (div_form === "formulaire_etudiant"){
                 chemin.setAttribute('value', "../../trombi-etu/files/etudiants.csv");
             }
@@ -53,6 +54,7 @@ function checkInscription(){
             }
             chemin.setAttribute('type', 'hidden');
             formulaire.appendChild(chemin);
+
 
             // Ajoute le type de la personne dans le POST pour indiquer quels champs ajouter dans les infos du compte.
             let type = document.createElement('input');

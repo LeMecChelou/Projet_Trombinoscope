@@ -22,7 +22,12 @@
 
         file_put_contents($_POST['filename'], $compte, FILE_APPEND);
 
-        header('Location: ../../trombi-etu/index.php');
+        if ($_POST['type'] == 'etudiant'){
+            header('Location: ../../trombi-etu/index.php');
+        }
+        else{
+            header('Location: ../../trombi-admin/index.php');
+        }
     }
 
     getInfosInscription();

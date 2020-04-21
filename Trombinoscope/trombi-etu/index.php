@@ -1,17 +1,28 @@
 <?php
-function hashPassword($passwd){
-    return hash('sha256', $passwd);
-}
+    if (isset($_SESSION)){
+        $token = explode(';', $_SESSION['token']);
+
+        if ($token[1] == 'etudiant'){
+            $fichier = file("./files/etudiants.csv");
+
+            for ($k = 0; $k < sizeof($fichier); $k++){
+                $ligne = str_replace("\n", "", $fichier[$k]);
+                $ligne = explode(";", $ligne);
+
+                if ($ligne[0] == $token[0]){
+                    header('Location: ./etudiant.php');
+                }
+            }
+        }
+    }
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
         <title>Étudiants</title>
         <link rel="stylesheet" type="text/css" href="assets/style.css"/>
-        <script>
-            function getHashPasswd(passwd){ return <?php echo "hashPassword(" ?> passwd <?php echo ")"; ?> }
-        </script>
         <script src="../scripts/Javascript/formsButtons.js"></script>
         <script src="../scripts/Javascript/checkConnection.js"></script>
         <script src="../scripts/Javascript/checkInscription.js"></script>
@@ -44,10 +55,21 @@ function hashPassword($passwd){
                     <label class="input_label" for="input_id">Identifiant</label>
                     <input type="text" id="input_id" class="input_form" name="input_id"/>
 
-                    <label class="input_label" for="input_passwd">Mot de passe</label>
+                    <label class="input_label" for="input_mdp">Mot de passe</label>
                     <input type="password" id="input_mdp" class="input_form" name="input_mdp"/>
 
-                    <p id='erreur_formulaire'></p>
+                    <p id='erreur_formulaire'>
+                        <?php
+                            if (isset($_GET['error'])){
+                                if ($_GET['error'] == '1'){
+                                    echo 'Identifiant erroné.';
+                                }
+                                if ($_GET['error'] == '2'){
+                                    echo 'Mot de passe erroné.';
+                                }
+                            }
+                        ?>
+                    </p>
                     <input type="button" id="bouton_submit_form" value="Se connecter" onclick="checkConnection();"/>
                 </form>
             </div>

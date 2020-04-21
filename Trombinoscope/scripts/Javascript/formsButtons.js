@@ -16,7 +16,18 @@ function connection_priority(){
             "                    <label class='input_label' for='input_passwd'>Mot de passe</label>\n" +
             "                    <input type='password' id='input_mdp' class='input_form' name='input_mdp'/>\n" +
             "\n" +
-            "                    <p id='erreur_formulaire'></p>\n" +
+            "                    <p id='erreur_formulaire'>\n" +
+            "                        <?php" +
+            "                            if (isset($_GET['error'])){" +
+            "                                if ($_GET['error'] == '1'){" +
+            "                                    echo 'Identifiant incorrect.';" +
+            "                                }" +
+            "                                if ($_GET['error'] == '2'){" +
+            "                                    echo 'Mot de passe erroné.';" +
+            "                                }" +
+            "                            }" +
+            "                        ?>\n" +
+            "                    </p>" +
             "                    <input type='button' id='bouton_submit_form' value='Se connecter' onclick='checkConnection();'/>\n" +
             "                </form>";
     }

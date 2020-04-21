@@ -1,3 +1,22 @@
+<?php
+if (isset($_SESSION)){
+    $token = explode(';', $_SESSION['token']);
+
+    if ($token[1] == 'administration'){
+        $fichier = file("./files/administration.csv");
+
+        for ($k = 0; $k < sizeof($fichier); $k++){
+            $ligne = str_replace("\n", "", $fichier[$k]);
+            $ligne = explode(";", $ligne);
+
+            if ($ligne[0] == $token[0]){
+                header('Location: ./administration.php');
+            }
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -38,6 +57,18 @@
                     <label class="input_label" for="input_passwd">Mot de passe</label>
                     <input type="password" id="input_passwd" class="input_form" name="input_passwd"/>
 
+                    <p id='erreur_formulaire'>
+                        <?php
+                        if (isset($_GET['error'])){
+                            if ($_GET['error'] == '1'){
+                                echo 'Identifiant erroné.';
+                            }
+                            if ($_GET['error'] == '2'){
+                                echo 'Mot de passe erroné.';
+                            }
+                        }
+                        ?>
+                    </p>
                     <input type="button" id="bouton_submit_form" value="Se connecter" onclick="checkConnection();"/>
                 </form>
             </div>

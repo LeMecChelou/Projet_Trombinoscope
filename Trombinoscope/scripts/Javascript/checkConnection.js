@@ -16,19 +16,11 @@ function checkConnection() {
     else{
         erreur.innerHTML = "";
 
-        // Permet d'envoyer le mot de passe déjà hasher dans la requête POST.
-        let mdp_hash = getHashPasswd(mdp);
-        let give_mdp = document.createElement('input');
-        give_mdp.setAttribute('name', 'mdp');
-        give_mdp.setAttribute('value', mdp_hash);
-        give_mdp.setAttribute('type', 'hidden');
-        form.appendChild(give_mdp);
-
         // Permet d'indiquer le type du compte pour procéder à la connexion dans le PHP.
         let set_type = document.createElement('input');
         set_type.setAttribute('name', 'type');
 
-        if (type_form === 'formulaire_etdudiant'){
+        if (type_form === 'formulaire_etudiant'){
             set_type.setAttribute('value', 'etudiant');
         }
         else{
@@ -37,8 +29,6 @@ function checkConnection() {
         set_type.setAttribute('type', 'hidden');
         form.appendChild(set_type);
 
-        // Enlève le mot de passe non-chiffré.
-        mdp.value = "";
         form.submit();
     }
 }
