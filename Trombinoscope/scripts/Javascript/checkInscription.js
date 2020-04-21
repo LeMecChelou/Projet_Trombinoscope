@@ -42,16 +42,29 @@ function checkInscription(){
         else{
             erreur.innerHTML = "";
 
-            let input = document.createElement('input');
-            input.setAttribute('name', "filename");
+            // Donne l'emplacement du fichier en fonction du type de la personne (Etudiant. <-> Administration).
+            let chemin = document.createElement('input');
+            chemin.setAttribute('name', "filename");
             if (div_form === "formulaire_etudiant"){
-                input.setAttribute('value', "../../trombi-etu/files/etudiants.csv");
+                chemin.setAttribute('value', "../../trombi-etu/files/etudiants.csv");
             }
             else{
-                input.setAttribute('value', "../../trombi-admin/files/administration.csv");
+                chemin.setAttribute('value', "../../trombi-admin/files/administration.csv");
             }
-            input.setAttribute('type', 'hidden');
-            formulaire.appendChild(input);
+            chemin.setAttribute('type', 'hidden');
+            formulaire.appendChild(chemin);
+
+            // Ajoute le type de la personne dans le POST pour indiquer quels champs ajouter dans les infos du compte.
+            let type = document.createElement('input');
+            type.setAttribute('name', 'type');
+            if (div_form === "formulaire_etudiant"){
+                type.setAttribute('value', 'etudiant');
+            }
+            else{
+                type.setAttribute('value', 'administration');
+            }
+            type.setAttribute('type', 'hidden');
+            formulaire.appendChild(type);
 
             formulaire.submit();
         }
