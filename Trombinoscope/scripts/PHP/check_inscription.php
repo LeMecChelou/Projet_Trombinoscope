@@ -22,7 +22,7 @@
 
         file_put_contents($_POST['filename'], $compte, FILE_APPEND);
 
-        header('Location: ../../trombi-etu/index.html');
+        header('Location: ../../trombi-etu/index.php');
     }
 
     getInfosInscription();

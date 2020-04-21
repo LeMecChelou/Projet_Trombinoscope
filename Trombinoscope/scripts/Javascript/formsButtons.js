@@ -14,8 +14,9 @@ function connection_priority(){
             "                    <input type='text' id='input_id' class='input_form' name='input_id'/>\n" +
             "\n" +
             "                    <label class='input_label' for='input_passwd'>Mot de passe</label>\n" +
-            "                    <input type='password' id='input_passwd' class='input_form' name='input_passwd'/>\n" +
+            "                    <input type='password' id='input_mdp' class='input_form' name='input_mdp'/>\n" +
             "\n" +
+            "                    <p id='erreur_formulaire'></p>\n" +
             "                    <input type='button' id='bouton_submit_form' value='Se connecter' onclick='checkConnection();'/>\n" +
             "                </form>";
     }
@@ -76,7 +77,7 @@ function inscription_priority(){
                 "                    </select>";
         }
 
-        formulaire.innerHTML += "<p id='erreur_inscription'></p>\n" +
+        formulaire.innerHTML += "<p id='erreur_formulaire'></p>\n" +
             "                    <input type='button' id='bouton_submit_form' value='Valider' onclick='checkInscription();'/>\n" +
             "                </form>";
     }

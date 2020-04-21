@@ -19,7 +19,7 @@ function checkInscription(){
         var groupe = document.getElementById("liste_groupes").value;
     }
 
-    let erreur = document.getElementById("erreur_inscription");
+    let erreur = document.getElementById("erreur_formulaire");
     let formulaire = document.getElementById("formulaire");
 
     if (id === "" || prenom === "" || nom === "" || mail === "" || tel === "" || adresse === "") {
