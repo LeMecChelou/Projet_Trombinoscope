@@ -12,7 +12,6 @@
             $ligne = str_replace("\n", "", $fichier[$k]);
             $ligne = explode(";", $ligne);
 
-            echo $_POST['input_id'] . " " . $ligne[0] . "\n";
             if ($ligne[0] == $_POST['input_id']){
                 checkPasswd($ligne);
             }
@@ -34,6 +33,7 @@
             if ($mdp == $compte[8]){
                 session_start();
                 $_SESSION['token'] = $compte[0] . ';etudiant';
+
                 header('Location: ../../trombi-etu/etudiant.php');
             }
             else{

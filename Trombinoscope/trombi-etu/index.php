@@ -1,5 +1,6 @@
 <?php
-    if (isset($_SESSION)){
+    session_start();
+    if (isset($_SESSION['token'])){
         $token = explode(';', $_SESSION['token']);
 
         if ($token[1] == 'etudiant'){
@@ -9,6 +10,7 @@
                 $ligne = str_replace("\n", "", $fichier[$k]);
                 $ligne = explode(";", $ligne);
 
+                echo $ligne;
                 if ($ligne[0] == $token[0]){
                     header('Location: ./etudiant.php');
                 }
@@ -36,6 +38,7 @@
                 <img id="logo_site" src="assets/logo_site.png" alt="Logo"/>
             </a>
             <h1>Étudiants</h1>
+            <a id="bouton_api" href="">API</a>
         </header>
 
         <div id="conteneur_choix">

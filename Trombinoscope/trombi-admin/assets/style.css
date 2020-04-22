@@ -4,23 +4,37 @@ body{
     margin: 0;
 }
 
-/* --------------------------------- */
-/*          Page principale          */
-/* --------------------------------- */
-#conteneur_choix_site{
-    margin-top: 15%;
-    margin-left: 37%;
+
+#boutons{
+	display: flex;
+	margin-top: 20%;
+	margin-left: 42.5%;
 }
 
-.bouton_choix_sites{
-    display: inline-block;
-    text-align: center;
-    background-color: #74cb34;
-    width: 100px;
-    padding: 4% 4% 4% 4%;
-    margin-right: 5%;
+.bouton_choix_site{
+	text-decoration: none;
+	text-align: center;
+	background-color: #74cb34;
+	padding: 1% 1% 1% 1%;
+	width: 10%;
 }
 
-.bouton_choix_sites a{
-    text-decoration: none;
+#bouton_gauche{
+	margin-right: 1%;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

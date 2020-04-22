@@ -46,34 +46,32 @@ function inscription_priority(){
         formulaire.action = "../scripts/PHP/check_inscription.php";
         let div_form = document.getElementById("div_formulaire");
 
-        formulaire.innerHTML = "<form method='post' id='formulaire_ins' action='../scripts/PHP/check_inscription.php'>\n" +
-            "                    <label class='input_label' for='input_id'>Identifiant</label>\n" +
-            "                    <input type='text' id='input_id' class='input_form' name='input_id'/>\n" +
-            "\n" +
-            "                    <label class='input_label' for='input_prenom'>Prénom</label>\n" +
-            "                    <input type='text' id='input_prenom' class='input_form' name='input_prenom'/>\n" +
-            "\n" +
-            "                    <label class='input_label' for='input_nom'>Nom</label>\n" +
-            "                    <input type='text' id='input_nom' class='input_form' name='input_nom'/>\n" +
-            "\n" +
-            "                    <label class='input_label' for='input_mail'>Mail</label>\n" +
-            "                    <input type='text' id='input_mail' class='input_form' name='input_mail'/>\n" +
-            "\n" +
-            "                    <label class='input_label' for='input_tel'>Numéro de téléphone</label>\n" +
-            "                    <input type='text' id='input_tel' class='input_form' name='input_tel'/>\n" +
-            "\n" +
-            "                    <label class='input_label' for='input_adresse'>Adresse</label>\n" +
-            "                    <input type='text' id='input_adresse' class='input_form' name='input_adresse'/>\n" +
-            "\n" +
-            "                    <label class='input_label' for='input_mdp'>Mot de passe</label>\n" +
-            "                    <input type='password' id='input_mdp' class='input_form' name='input_mdp'/>\n" +
-            "\n" +
-            "                    <label class='input_label' for='input_mdp2'>Entrez de nouveau le mot de passe</label>\n" +
-            "                    <input type='password' id='input_mdp2' class='input_form' name='input_mdp2'/>\n";
-
-        // Ne s'active que si c'est le formulaire pour les étudiants.
         if (div_form.className === "formulaire_etudiant"){
-            formulaire.innerHTML += "<label class='input_label' for='liste_filieres'>Choix de la filère: </label>\n" +
+            formulaire.innerHTML = "<form method='post' id='formulaire_ins' action='../scripts/PHP/check_inscription.php'>\n" +
+                "                    <label class='input_label' for='input_id'>Identifiant</label>\n" +
+                "                    <input type='text' id='input_id' class='input_form' name='input_id'/>\n" +
+                "\n" +
+                "                    <label class='input_label' for='input_prenom'>Prénom</label>\n" +
+                "                    <input type='text' id='input_prenom' class='input_form' name='input_prenom'/>\n" +
+                "\n" +
+                "                    <label class='input_label' for='input_nom'>Nom</label>\n" +
+                "                    <input type='text' id='input_nom' class='input_form' name='input_nom'/>\n" +
+                "\n" +
+                "                    <label class='input_label' for='input_mail'>Mail</label>\n" +
+                "                    <input type='text' id='input_mail' class='input_form' name='input_mail'/>\n" +
+                "\n" +
+                "                    <label class='input_label' for='input_tel'>Numéro de téléphone</label>\n" +
+                "                    <input type='text' id='input_tel' class='input_form' name='input_tel'/>\n" +
+                "\n" +
+                "                    <label class='input_label' for='input_adresse'>Adresse</label>\n" +
+                "                    <input type='text' id='input_adresse' class='input_form' name='input_adresse'/>\n" +
+                "\n" +
+                "                    <label class='input_label' for='input_mdp'>Mot de passe</label>\n" +
+                "                    <input type='password' id='input_mdp' class='input_form' name='input_mdp'/>\n" +
+                "\n" +
+                "                    <label class='input_label' for='input_mdp2'>Entrez de nouveau le mot de passe</label>\n" +
+                "                    <input type='password' id='input_mdp2' class='input_form' name='input_mdp2'/>\n" +
+                "                    <label class='input_label' for='liste_filieres'>Choix de la filère: </label>\n" +
                 "                    <select id='liste_filieres' class='input_form' name='input_filiere' onchange=\"loadGroups();\">\n" +
                 "                        <option value=''>...</option>\n" +
                 "                        <option value='L1-MIPI'>L1-MIPI</option>\n" +
@@ -85,12 +83,27 @@ function inscription_priority(){
                 "                    <label class='input_label' for='liste_groupes'>Choix du groupe: </label>\n" +
                 "                    <select id='liste_groupes' class='input_form' name='input_groupe'>\n" +
                 "                        <option value=''>...</option>\n" +
-                "                    </select>";
+                "                    </select>\n" +
+                "                    <p id='erreur_formulaire'></p>\n" +
+                "                    <input type='button' id='bouton_submit_form' value='Valider' onclick='checkInscription();'/>\n" +
+                "                </form>";
+        }
+        else{
+            formulaire.innerHTML = "<form method='post' id='formulaire_ins' action='../scripts/PHP/check_inscription.php'>\n" +
+                "                    <label class='input_label' for='input_id'>Identifiant</label>\n" +
+                "                    <input type='text' id='input_id' class='input_form' name='input_id'/>\n" +
+                "\n" +
+                "                    <label class='input_label' for='input_prenom'>Prénom</label>\n" +
+                "                    <input type='text' id='input_prenom' class='input_form' name='input_prenom'/>\n" +
+                "\n" +
+                "                    <label class='input_label' for='input_nom'>Nom</label>\n" +
+                "                    <input type='text' id='input_nom' class='input_form' name='input_nom'/>\n" +
+                "\n" +
+                "                    <p id='erreur_formulaire'></p>\n" +
+                "                    <input type='button' id='bouton_submit_form' value='Valider' onclick='checkInscription();'/>\n" +
+                "                </form>";
         }
 
-        formulaire.innerHTML += "<p id='erreur_formulaire'></p>\n" +
-            "                    <input type='button' id='bouton_submit_form' value='Valider' onclick='checkInscription();'/>\n" +
-            "                </form>";
     }
 }
 
