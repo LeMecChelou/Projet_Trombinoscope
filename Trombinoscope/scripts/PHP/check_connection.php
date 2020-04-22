@@ -17,12 +17,12 @@
             }
         }
 
-        /*if ($_POST['type'] == 'etudiant'){
+        if ($_POST['type'] == 'etudiant'){
             header('Location: ../../trombi-etu/index.php?error=1');
         }
         else{
             header('Location: ../../trombi-admin/index.php?error=1');
-        }*/
+        }
     }
 
 

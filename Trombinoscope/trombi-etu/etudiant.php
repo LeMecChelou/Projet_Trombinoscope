@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Étudiants</title>
         <link rel="stylesheet" type="text/css" href="assets/style.css"/>
+        <script src='./files/changeInformations.js'></script>
     </head>
 
     <body>
@@ -20,6 +21,19 @@
         <div id="conteneur_infos_etu">
             <div id="conteneur_infos">
                 <div id="div_table_info_etu">
+                    <h2 id="titre_div_infos">Informations</h2>
+                    <p id="erreur_mdp">
+                        <?php
+                            if (isset($_GET['error'])){
+                                if ($_GET['error'] == "1"){
+                                    echo "Le mot de passe actuel n'a pas été renseigné.";
+                                }
+                                else if ($_GET['error'] == "2"){
+                                    echo "Le mot de passe actuel est faux.";
+                                }
+                            }
+                        ?>
+                    </p>
                     <table id="table_info_etu">
                         <?php
                             session_start();
@@ -60,7 +74,7 @@
 
                         ?>
                     </table>
-                    <button id="bouton_change_infos" onclick=''>Changer les informations</button>
+                    <button id="bouton_change_infos" onclick='changeHTMLInformations();'>Changer les informations</button>
                 </div>
             </div>
         </div>
