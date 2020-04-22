@@ -147,6 +147,33 @@ body{
     background-color: #67b62f;
 }
 
+#conteneur_infos{
+    background-color: white;
+    border: black 1px solid;
+    width: 25%;
+    margin-top: 5%;
+    margin-left: 3%;
+    padding-bottom: 1%;
+}
+
+#div_table_info_etu{
+    padding-left: 5%;
+    padding-top: 5%;
+}
+
+#table_info_etu{
+    font-size: 120%;
+}
+
+.colonne_titre{
+    font-weight: bold;
+    padding-bottom: 2%;
+}
+
+#bouton_change_infos{
+    margin-top: 10%;
+    margin-left: 27.5%;
+}
 
 
 
