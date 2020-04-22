@@ -7,7 +7,7 @@
 
         $ligne = explode(';', $ligne);
 
-        $type = str_replace("\n", "", $ligne[1]);
+        $type = rtrim($ligne[1]);
         if ($type == 'etudiant'){
             header('Location: ../../trombi-etu/index.php');
         }

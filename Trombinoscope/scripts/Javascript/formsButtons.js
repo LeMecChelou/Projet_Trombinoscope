@@ -98,6 +98,13 @@ function inscription_priority(){
                 "\n" +
                 "                    <label class='input_label' for='input_nom'>Nom</label>\n" +
                 "                    <input type='text' id='input_nom' class='input_form' name='input_nom'/>\n" +
+                "                    <label class='input_label' for='input_mail'>Mail</label>\n" +
+                "                    <input type='text' id='input_mail' class='input_form' name='input_mail'/>\n" +
+                "                    <label class='input_label' for='input_mdp'>Mot de passe</label>\n" +
+                "                    <input type='password' id='input_mdp' class='input_form' name='input_mdp'/>\n" +
+                "\n" +
+                "                    <label class='input_label' for='input_mdp2'>Entrez de nouveau le mot de passe</label>\n" +
+                "                    <input type='password' id='input_mdp2' class='input_form' name='input_mdp2'/>\n" +
                 "\n" +
                 "                    <p id='erreur_formulaire'></p>\n" +
                 "                    <input type='button' id='bouton_submit_form' value='Valider' onclick='checkInscription();'/>\n" +

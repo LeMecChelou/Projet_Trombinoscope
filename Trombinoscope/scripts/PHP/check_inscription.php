@@ -11,10 +11,9 @@
         }
         else{
             # Template du compte ADMINISTRATION dans le CSV:
-            # ID;PRENOM;NOM;MAIL;TELEPHONE;ADRESSE;MDP;<SI IMAGE -> 'LINK' ELSE -> None
+            # ID;PRENOM;NOM;MAIL;MDP
             $compte = $_POST['input_id'] . ";" . $_POST['input_prenom'] . ";" . $_POST['input_nom'] . ";" .
-                $_POST['input_mail'] . ";" . $_POST['input_tel'] . ";" . $_POST['input_adresse'] . ";" .
-                $mdp . ";None\n";
+                $_POST['input_mail'] . ";" . $mdp . "\n";
         }
 
 

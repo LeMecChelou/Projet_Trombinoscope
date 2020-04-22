@@ -9,7 +9,7 @@
         }
 
         for ($k = 0; $k < sizeof($fichier); $k++){
-            $ligne = str_replace("\n", "", $fichier[$k]);
+            $ligne = rtrim($fichier[$k]);
             $ligne = explode(";", $ligne);
 
             if ($ligne[0] == $_POST['input_id']){
@@ -41,7 +41,7 @@
             }
         }
         else{
-            if ($mdp == $compte[6]){
+            if ($mdp == $compte[4]){
                 session_start();
                 $_SESSION['token'] = $compte[0] . ';administration';
                 header('Location: ../../trombi-admin/administration.php');
