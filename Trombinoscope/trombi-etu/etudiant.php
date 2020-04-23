@@ -15,7 +15,7 @@
             </a>
             <h1>Étudiants</h1>
             <a id="bouton_deco" href="../scripts/PHP/deconnexion.php">Déconnexion</a>
-            <a id="bouton_api" href="">API</a>
+            <a id="bouton_api" href="./api.php">API</a>
         </header>
 
         <div id="conteneur_infos_etu">
@@ -28,13 +28,13 @@
                                 if ($_GET['error'] == "1"){
                                     echo "Le mot de passe actuel n'a pas été renseigné.";
                                 }
-                                else if ($_GET['error'] == "2"){
+                                if ($_GET['error'] == "2"){
                                     echo "Le mot de passe actuel est faux.";
                                 }
-                                else if ($_GET['error'] == "3"){
+                                if ($_GET['error'] == "3"){
                                     echo "Le fichier téléversé n'ests pas une image.";
                                 }
-                                else if ($_GET['error'] == "4"){
+                                if ($_GET['error'] == "4"){
                                     echo "L'image de profil ne respecte pas les dimensions (160 <= x/y <= 175)";
                                 }
                             }

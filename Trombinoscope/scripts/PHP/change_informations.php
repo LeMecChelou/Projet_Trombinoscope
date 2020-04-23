@@ -2,6 +2,7 @@
     session_start();
     function checkPasswordChange(){
         $token = rtrim(explode(";", $_SESSION['token'])[1]);
+        $id = rtrim(explode(";", $_SESSION['token'])[0]);
         if (isset($_POST['verif_mdp'])){
 
             if ($token == "etudiant"){
@@ -12,7 +13,7 @@
                     $ligne = explode(";", rtrim($fichier[$k]));
                     $mdp = $ligne[8];
 
-                    if ($mdp == $mdp_verif){
+                    if ($mdp == $mdp_verif && $id == $ligne[0]){
                         changeInformations($ligne, $fichier, $k);
                         return;
                     }
@@ -27,8 +28,9 @@
                     $ligne = explode(";", rtrim($fichier[$k]));
                     $mdp = $ligne[6];
 
-                    if ($mdp == $mdp_verif){
+                    if ($mdp == $mdp_verif && $id == $ligne[0]){
                         changeInformations($ligne, $fichier, $k);
+                        return;
                     }
                 }
                 header("Location: ../../trombi-admin/administration.php?error=2");
@@ -100,6 +102,8 @@
             else{
                 $new_compte = $new_compte . $compte[8] . ";";
             }
+
+            $error_image = false;
             if ($_FILES["change_pp"]['name'] != ""){
                 $type = rtrim(explode("/", $_FILES['change_pp']['type'])[1]);
                 $new_name = $compte[0] . "." . $type;
@@ -117,7 +121,6 @@
                     }
                     move_uploaded_file($_FILES['change_pp']['tmp_name'], $dir);
                     $new_compte = $new_compte . "images_etu/$new_name" . "\n";
-                    $error_image = false;
                 }
             }
             else{
