@@ -62,6 +62,7 @@
                                         echo "<p id='erreur_image_profil'></p>";
 
                                         echo "<tr><td class='colonne_titre'>Identifiant:</td><td>$ligne[0]</td></tr>";
+                                        echo "<tr><td class='colonne_titre'>Identifiant API:</td><td>" . $ligne[0][0] . $k . "</td>";
                                         echo "<tr><td class='colonne_titre'>Prénom:</td><td>$ligne[1]</td></tr>";
                                         echo "<tr><td class='colonne_titre'>Nom:</td><td>$ligne[2]</td></tr>";
                                         echo "<tr><td class='colonne_titre'>Filière:</td><td>$ligne[3]</td></tr>";

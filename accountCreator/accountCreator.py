@@ -36,6 +36,6 @@ for nb in range(nb_comptes):
     mdp = (nom[0] + prenom).lower().encode()
     m_hash.update(mdp)
 
-    compte = "{};{};{};{};{};{};{};{};{}\n".format(idt, prenom, nom, filiere, groupe, mail, phone, m_hash.hexdigest(),
-                                                   DIR_PP)
+    compte = "{};{};{};{};{};{};{};{};{};{}\n".format(idt, prenom, nom, filiere, groupe, mail, phone, ADRESSE,
+                                                   m_hash.hexdigest(), DIR_PP)
     saveAccount(compte)

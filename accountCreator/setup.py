@@ -19,3 +19,5 @@ GROUPES = {"L1-MIPI": ["A1", "A2", "A3"], "L2-MI": ['B1', "B2", "B3"], "L3-I": [
            "LP RS": ['D1', 'D2', 'D3'], "LPI-RIWS": ['E1', 'E2', 'E3']}
 
 DIR_PP = "images_etu/none_pp.jpg"
+
+ADRESSE = "6, rue de Paris"
