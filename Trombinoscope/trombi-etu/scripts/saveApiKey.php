@@ -1,24 +1,25 @@
 <?php
     function saveApiKey(){
-        $fichier = file("../files/api_keys.csv");
+        $fichier = json_decode(file_get_contents("../files/api_keys.json"));
+        $new_user = array();
 
-        for ($k = 0; $k < sizeof($fichier); $k++){
-            $mail = explode(";", rtrim($fichier[$k]))[0];
-
-            if ($mail == $_POST['mail_api_key']){
+        foreach ($fichier as $infos){
+            if ($infos[0] == $_POST['mail_api_key']){
                 header('Location: ../documentation_api.php?key=1');
                 return;
             }
         }
 
-        $new_fichier = fopen("../files/api_keys.csv", "w");
-        for ($k = 0; $k < sizeof($fichier); $k++){
-            fwrite($new_fichier, $fichier[$k]);
-        }
+        $new_user[] = $_POST['mail_api_key'];
+        $new_user[] = $_POST['key_api'];
+        $new_user[] = 0;
+        $new_user[] = 0;
 
-        $ligne = $_POST['mail_api_key'] . ";" . $_POST['key_api'] . "\n";
-        fwrite($new_fichier, $ligne);
+        $fichier[] = $new_user;
 
+        $new_fichier = fopen("../files/api_keys.json", "w");
+        fwrite($new_fichier, json_encode($fichier));
+        fclose($new_fichier);
 
         header('Location: ../documentation_api.php?key=' . $_POST['key_api']);
     }

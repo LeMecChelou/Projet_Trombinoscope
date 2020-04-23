@@ -36,9 +36,8 @@
     }
 
 
-    function getFiliere($etudiants, $filiere, $groupes, $groupeOnly){
+    function getFiliere($etudiants, $groupes, $groupeOnly){
         $array_filiere = array();
-        $filiere = strtoupper($filiere);
 
         foreach($groupes as $groupe){
             if (!$groupeOnly){
@@ -65,9 +64,10 @@
 
                 // Récupération des filières.
                 foreach ($filieres as $filiere => $groupes) {
-                    $data[$filiere] = getFiliere($etudiants, $filiere, $groupes, true);
+                    $data[$filiere] = getFiliere($etudiants, $groupes, false);
                 }
 
+                addLog("all");
                 return json_encode($data);
             }
 
@@ -91,7 +91,13 @@
 
             foreach ($filieres as $filiere => $groupes){
                 if ($filiere == strtoupper($_GET['filiere'])){
-                    $data[$filiere] = getFiliere($etudiants, $filiere, $groupes, $group_only);
+                    $data[$filiere] = getFiliere($etudiants, $groupes, $group_only);
+                    if ($group_only){
+                        addLog("filiere-grp_only");
+                    }
+                    else{
+                        addLog("filiere");
+                    }
                     return json_encode($data);
                 }
             }
@@ -106,6 +112,8 @@
                 foreach ($groupes as $groupe){
                     if ($groupe == strtoupper($_GET['groupe'])){
                         $data[$groupe] = getGroup($etudiants, $groupe);
+
+                        addLog("groupe");
                         return json_encode($data);
                     }
                 }
@@ -122,6 +130,7 @@
                     $etudiant = explode(";", rtrim($etudiants[$k]));
                     $data[] = getStudent($etudiant, $k);
                 }
+                addLog("all_etu");
                 return json_encode($data);
             }
 
@@ -137,6 +146,8 @@
 
                 if ($_GET['etu'] == $id){
                     $data[] = getStudent($etudiant, $k);
+
+                    addLog("etu");
                     return json_encode($data);
                 }
             }
@@ -148,27 +159,108 @@
     }
 
 
-function checkAPIKey(){
-    if (isset($_GET['key'])){
-        $fichier = file("../files/api_keys.csv");
+    function checkRequestsLimit($fichier, $infos){
 
-        for ($k = 0; $k < sizeof($fichier); $k++){
-            $key = explode(";", rtrim($fichier[$k]))[1];
+        $date = getdate();
+        if ($infos[3] != $date['hours'] + 2){
+            $infos[3] = $date['hours'] + 2;
+            $infos[2] = 0;
 
-            if ($key == $_GET['key']){
-                return generateJSON();
+            $new_fichier = array();
+            $new_fichier[] = $infos;
+
+            for ($k = 0; $k < sizeof($fichier); $k++){
+
+                if ($fichier[$k][0] != $infos[0]){
+                    $new_fichier[] = $fichier[$k];
+                }
             }
+
+            $fichier = fopen("../files/api_keys.json", "w");
+            fwrite($fichier, json_encode($new_fichier));
+            fclose($fichier);
+
+            return true;
+        }
+        else if ($infos[2] < 100){
+            $infos[2] += 1;
+
+            $new_fichier = array();
+            $new_fichier[] = $infos;
+
+            for ($k = 0; $k < sizeof($fichier); $k++){
+
+                if ($fichier[$k][0] != $infos[0]){
+                    $new_fichier[] = $fichier[$k];
+                }
+            }
+
+            $fichier = fopen("../files/api_keys.json", "w");
+            fwrite($fichier, json_encode($new_fichier));
+            fclose($fichier);
+
+            return true;
         }
 
-        $data = array();
-        $data['Error'] = "La clé d'API n'existe pas.";
-        return json_encode($data);
+        return false;
     }
-    else{
-        $data = file_get_contents("../files/helpApi.json");
-        return $data;
+
+
+    function checkAPIKey(){
+        if (isset($_GET['key'])){
+            $fichier = json_decode(file_get_contents("../files/api_keys.json"));
+            $data = array();
+
+            foreach ($fichier as $infos){
+                if (rtrim($infos[1]) == $_GET['key']){
+                    $allow = checkRequestsLimit($fichier, $infos);
+                    if ($allow){
+                        return generateJSON();
+                    }
+                    else{
+                        $data['Error'] = "Vous avez dépassé le nombre de requêtes maximal par heure.";
+                        return json_encode($data);
+                    }
+                }
+            }
+            $data['Error'] = "La clé d'API n'existe pas.";
+            return json_encode($data);
+        }
+        else{
+            $data = file_get_contents("../files/helpApi.json");
+            return $data;
+        }
     }
-}
+
+
+    function addLog($request){
+
+        $time_actu = " | " . date("d/m/Y - h:i:s");
+        if ($request == "all"){
+            $log = "Requete: 'all'" . $time_actu . "\n";
+        }
+        else if ($request == "filiere-grp_only"){
+            $log = "Requete: 'filiere-grp_only'" . $time_actu . "\n";
+        }
+        else if ($request == "filiere"){
+            $log = "Requete: 'filiere'" . $time_actu . "\n";
+        }
+        else if ($request == "groupe"){
+            $log = "Requete: 'groupe'" . $time_actu . "\n";
+        }
+        else if ($request == "all_etu"){
+            $log = "Requete: 'all_etu'" . $time_actu . "\n";
+        }
+        else if ($request == "etu"){
+            $log = "Requete: 'etu'" . $time_actu . "\n";
+        }
+
+        $fichier = fopen("../files/api_logs.json", "a");
+        fwrite($fichier, $log);
+        fclose($fichier);
+    }
+
+
     header('Content-type: application/json');
     $data = checkAPIKey();
     echo $data;
