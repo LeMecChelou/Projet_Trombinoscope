@@ -2,9 +2,9 @@ function changeHTMLInformations(){
     let div_infos = document.getElementById("div_table_info_etu");
 
     div_infos.innerHTML = "<h2 id=\"titre_div_infos_change\">Changement d'informations</h2>\n" +
-        "                        <form method=\"post\" id='form_change_infos' action=\"../scripts/PHP/change_informations.php\">\n" +
+        "                        <form method=\"post\" enctype='multipart/form-data' id='form_change_infos' action=\"../scripts/PHP/change_informations.php\">\n" +
         "                            <label class=\"titre_change\" for=\"input_change_pp\">Image de profil</label>\n" +
-        "                            <input type=\"file\" id=\"input_change_pp\" class=\"input_change\" name=\"change_pp\">\n" +
+        "                            <input type=\"file\" id=\"input_change_pp\" class=\"input_change\" name=\"change_pp\" accept=\".jpg, .jpeg, .png\">\n" +
         "\n" +
         "                            <label class=\"titre_change\" for=\"change_id\">Identifiant:</label>\n" +
         "                            <input type=\"text\" id=\"change_id\" class=\"input_change\" name=\"change_id\"/>\n" +

@@ -54,8 +54,8 @@ if (isset($_SESSION)){
                     <label class="input_label" for="input_id">Identifiant</label>
                     <input type="text" id="input_id" class="input_form" name="input_id"/>
 
-                    <label class="input_label" for="input_passwd">Mot de passe</label>
-                    <input type="password" id="input_passwd" class="input_form" name="input_passwd"/>
+                    <label class="input_label" for="input_mdp">Mot de passe</label>
+                    <input type="password" id="input_mdp" class="input_form" name="input_passwd"/>
 
                     <p id='erreur_formulaire'>
                         <?php

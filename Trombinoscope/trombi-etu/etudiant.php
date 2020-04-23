@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>Étudiants</title>
         <link rel="stylesheet" type="text/css" href="assets/style.css"/>
-        <script src='./files/changeInformations.js'></script>
+        <script src='./scripts/changeInformations.js'></script>
     </head>
 
     <body>
@@ -31,6 +31,12 @@
                                 else if ($_GET['error'] == "2"){
                                     echo "Le mot de passe actuel est faux.";
                                 }
+                                else if ($_GET['error'] == "3"){
+                                    echo "Le fichier téléversé n'ests pas une image.";
+                                }
+                                else if ($_GET['error'] == "4"){
+                                    echo "L'image de profil ne respecte pas les dimensions (160 <= x/y <= 175)";
+                                }
                             }
                         ?>
                     </p>
@@ -43,8 +49,7 @@
 
                                 $fichier = file("./files/etudiants.csv");
                                 for ($k = 0; $k < sizeof($fichier); $k++){
-                                    $ligne = str_replace("\n", "", $fichier[$k]);
-                                    $ligne = explode(";", $ligne);
+                                    $ligne = explode(";", rtrim($fichier[$k]));
 
                                     if ($id == $ligne[0]){
                                         if ($ligne[9] == "None"){

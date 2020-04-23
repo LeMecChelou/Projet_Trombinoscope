@@ -121,33 +121,33 @@ function loadGroups(){
 
     if (filiere === "L1-MIPI"){
         groupes.innerHTML = "<option value=''>...</option>" +
-            "<option value='M1'>M1</option>" +
-            "<option value='M2'>M2</option>" +
-            "<option value='M3'>M3</option>" +
-            "<option value='M4'>M4</option>" +
-            "<option value='M5'>M5</option>";
-    }
-    else if (filiere === "L2-MI"){
-        groupes.innerHTML = "<option value=''>...</option>" +
             "<option value='A1'>A1</option>" +
             "<option value='A2'>A2</option>" +
             "<option value='A3'>A3</option>";
     }
+    else if (filiere === "L2-MI"){
+        groupes.innerHTML = "<option value=''>...</option>" +
+            "<option value='B1'>B1</option>" +
+            "<option value='B2'>B2</option>" +
+            "<option value='B3'>B3</option>";
+    }
     else if (filiere === "L3-I"){
         groupes.innerHTML = "<option value=''>...</option>" +
-            "<option value='I1'>I1</option>" +
-            "<option value='I2'>I2</option>" +
-            "<option value='I3'>I3</option>";
+            "<option value='C1'>C1</option>" +
+            "<option value='C2'>C2</option>" +
+            "<option value='C3'>C3</option>";
     }
     else if (filiere === "LP RS"){
         groupes.innerHTML = "<option value=''>...</option>" +
-            "<option value='LP1'>LP1</option>" +
-            "<option value='LP1'>LP1</option>";
+            "<option value='D1'>D1</option>" +
+            "<option value='D2'>D2</option>" +
+            "<option value='D3'>D3</option>";
     }
     else if (filiere === "LPI-RIWS"){
         groupes.innerHTML = "<option value=''>...</option>" +
-            "<option value='LPI1'>LPI1</option>" +
-            "<option value='LPI2'>LPI2</option>";
+            "<option value='E1'>E1</option>" +
+            "<option value='E2'>E2</option>" +
+            "<option value='E3'>E3</option>";
     }
     else{
         groupes.innerHTML = "<option value=''>...</option>";

@@ -14,9 +14,10 @@
 
                     if ($mdp == $mdp_verif){
                         changeInformations($ligne, $fichier, $k);
+                        return;
                     }
                 }
-                # header("Location: ../../trombi-etu/etudiant.php?error=2");
+                header("Location: ../../trombi-etu/etudiant.php?error=2");
             }
             else{
                 $fichier = file('../../trombi-admin/files/administration.csv');
@@ -99,8 +100,25 @@
             else{
                 $new_compte = $new_compte . $compte[8] . ";";
             }
-            if ($_POST['change_pp'] != ""){
-                $new_compte = $new_compte . $_POST['change_pp'] . "\n";
+            if ($_FILES["change_pp"]['name'] != ""){
+                $type = rtrim(explode("/", $_FILES['change_pp']['type'])[1]);
+                $new_name = $compte[0] . "." . $type;
+                $dir = "../../trombi-etu/images_etu/" . $new_name;
+
+                $size = getimagesize($_FILES['change_pp']['tmp_name']);
+
+                if (($size[0] < 160 || $size[0] > 175) || ($size[1] < 160 || $size[1] > 175)){
+                    $error_image = true;
+                    $new_compte = $new_compte . $compte[9] . "\n";
+                }
+                else{
+                    if ($compte[9] != "None"){
+                        unlink("../../trombi-etu/" . $compte[9]);
+                    }
+                    move_uploaded_file($_FILES['change_pp']['tmp_name'], $dir);
+                    $new_compte = $new_compte . "images_etu/$new_name" . "\n";
+                    $error_image = false;
+                }
             }
             else{
                 $new_compte = $new_compte . $compte[9] . "\n";
@@ -112,7 +130,12 @@
                 fwrite($new_fichier, $fichier[$k]);
             }
 
-            header('Location: ../../trombi-etu/etudiant.php');
+            if ($error_image){
+                header('Location: ../../trombi-etu/etudiant.php?error=4');
+            }
+            else{
+                header('Location: ../../trombi-etu/etudiant.php');
+            }
         }
         else{
             $new_compte = "";
@@ -136,39 +159,18 @@
             else{
                 $new_compte = $new_compte . $compte[2] . ";";
             }
-
-            $new_compte = $new_compte . $compte[3] . ";" . $compte[4] . ";";
-
             if ($_POST['change_mail'] != ""){
                 $new_compte = $new_compte . $_POST['change_mail'] . ";";
             }
             else{
-                $new_compte = $new_compte . $compte[5] . ";";
-            }
-            if ($_POST['change_tel'] != ""){
-                $new_compte = $new_compte . $_POST['change_tel'] . ";";
-            }
-            else{
-                $new_compte = $new_compte . $compte[6] . ";";
-            }
-            if ($_POST['change_adresse'] != ""){
-                $new_compte = $new_compte . $_POST['change_adresse'] . ";";
-            }
-            else{
-                $new_compte = $new_compte . $compte[7] . ";";
+                $new_compte = $new_compte . $compte[3] . ";";
             }
             if ($_POST['change_mdp1'] != ""){
                 $mdp1 = hash('sha256', $_POST['change_mdp1']);
                 $new_compte = $new_compte . $mdp1 . ";";
             }
             else{
-                $new_compte = $new_compte . $compte[8] . ";";
-            }
-            if ($_POST['change_pp'] != ""){
-                $new_compte = $new_compte . $_POST['change_pp'] . "\n";
-            }
-            else{
-                $new_compte = $new_compte . $compte[9] . "\n";
+                $new_compte = $new_compte . $compte[4] . ";";
             }
 
             $fichier[$pos] = $new_compte;
