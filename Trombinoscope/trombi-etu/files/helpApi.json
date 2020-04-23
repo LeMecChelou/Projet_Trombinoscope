@@ -1,0 +1,40 @@
+{
+  "API": {
+    "API": "API permettant de récupérer des informations sur les étudiants/groupes/filières. Il faut d'abord récupérer une clé d'API pour l'utiliser.",
+    "Documentation": "http://benjamin-guirlet.alwaysdata.net/trombi-etu/documentation_api.php.",
+    "Lien": "http://benjamin-guirlet.alwaysdata.net/trombi-etu/api/api.php",
+    "Paramètres": {
+      "all": {
+        "Doc": "Renvoi toutes les filières avec leurs groupes et étudiants par groupe.",
+        "Ex": "/api/api.php?key=<key>&all=1"
+      },
+      "Filières": {
+        "filiere": {
+          "Doc": "Donne les étudiants pour chaque groupe de la filière spécifiée.",
+          "Ex": "/api/api.php?key=<key>&filiere=<filiere>"
+        },
+        "grp": {
+          "Doc": "Paramètre supplémentaire pour indiquer si on veut afficher uniquement les groupes.",
+          "Valeur": 1,
+          "Ex": "/api/api.php?key=<key>&filiere=<filiere>&grp=1"
+        }
+      },
+      "Groupes": {
+        "groupe": {
+          "Doc": "Permet d'afficher directement tout les élèves d'un groupe.",
+          "Ex": "/api/api.php?key=<key>&groupe=<groupe>"
+        }
+      },
+      "Etudiants": {
+        "all": {
+          "Doc": "Permet d'obtenir tout les étudiants.",
+          "Ex": "/api/api.php?key=<key>&all=1"
+        },
+        "etu": {
+          "Doc": "Permet d'obtenir uniquement un étudiant avec son identifiant (ID dans le json).",
+          "Ex": "/api/api.php?key=<key>&etu=<identifiant>"
+        }
+      }
+    }
+  }
+}

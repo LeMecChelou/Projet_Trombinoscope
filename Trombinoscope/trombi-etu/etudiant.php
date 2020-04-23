@@ -15,7 +15,7 @@
             </a>
             <h1>Étudiants</h1>
             <a id="bouton_deco" href="../scripts/PHP/deconnexion.php">Déconnexion</a>
-            <a id="bouton_api" href="./api.php">API</a>
+            <a id="bouton_api" href="documentation_api.php">API</a>
         </header>
 
         <div id="conteneur_infos_etu">

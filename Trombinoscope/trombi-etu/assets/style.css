@@ -247,6 +247,77 @@ body{
 }
 
 
+/* --------------------------------------------- */
+/*          Page documentation de l'API          */
+/* --------------------------------------------- */
+
+#get_api_key{
+    background-color: #e6e6e6;
+    border: black 1px solid;
+    display: inline-block;
+    float: right;
+    width: 17%;
+    margin-top: -4.35%;
+}
+
+#get_api_key h2{
+    padding-top: 1%;
+    margin-left: 3%;
+}
+
+#key_api_paragraphe{
+    margin-left: 5%;
+}
+
+#label_mail_api_key{
+    font-weight: bold;
+    font-size: 105%;
+    margin-left: 5%;
+}
+
+#mail_api_key{
+    display: block;
+    margin-left: 5%;
+    width: 70%;
+}
+
+#erreur_mail_api{
+    color: red;
+    margin-left: 5%;
+    margin-bottom: -7%;
+    margin-top: 0;
+}
+
+#bouton_mail_key{
+    background-color: #74cb34;
+    border: black 1px solid;
+    padding: 1% 2% 1% 2%;
+    margin-left: 30%;
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+
+#bouton_mail_key:hover{
+    background-color: #67b62f;
+}
+
+#bouton_mail_key:active{
+    background-color: #b3b3b3;
+}
+
+#documentation{
+    background-color: white;
+    border: black 1px solid;
+    width: 75%;
+    margin-top: 5%;
+}
+
+#titre_documentation{
+    padding-top: 1%;
+    margin-left: 5%;
+}
+
+
 
 
 
