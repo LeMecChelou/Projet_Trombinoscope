@@ -52,11 +52,11 @@
                                     $ligne = explode(";", rtrim($fichier[$k]));
 
                                     if ($id == $ligne[0]){
-                                        if ($ligne[9] == "None"){
+                                        if ($ligne[10] == "None"){
                                             echo "<img id='error' class='image_profil' src='./assets/pp_none.png' alt=\"Image de profil d'erreur.\"/>";
                                         }
                                         else{
-                                            echo "<img id='None' class='image_profil' src='$ligne[9]' alt=\"Image de profil.\"/>";
+                                            echo "<img id='None' class='image_profil' src='$ligne[10]' alt=\"Image de profil.\"/>";
                                         }
 
                                         echo "<p id='erreur_image_profil'></p>";

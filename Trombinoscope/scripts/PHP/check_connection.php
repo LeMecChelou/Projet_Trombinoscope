@@ -13,7 +13,8 @@
             $ligne = explode(";", $ligne);
 
             if ($ligne[0] == $_POST['input_id']){
-                checkPasswd($ligne);
+                 checkPasswd($ligne);
+                 return;
             }
         }
 
@@ -27,12 +28,19 @@
 
 
     function checkPasswd($compte){
-        $mdp = hash('sha256', $_POST['input_mdp']);
 
         if ($_POST['type'] == 'etudiant'){
+            $mdp = hash('sha256', rtrim($_POST['input_mdp'] . $compte[9]));
+
             if ($mdp == $compte[8]){
                 session_start();
                 $_SESSION['token'] = $compte[0] . ';etudiant';
+
+                include("../../trombi-etu/api/saveLog.php");
+                $log = array();
+                $log['Action'] = "Connexion: " . $compte[0];
+                $log['Type'] = "Connexion";
+                saveLog($log, ["../../trombi-etu/files/logs_etu.json"]);
 
                 header('Location: ../../trombi-etu/etudiant.php');
             }
@@ -41,16 +49,24 @@
             }
         }
         else{
+            $mdp = hash('sha256', $_POST['input_mdp'] . $compte[5]);
+
             if ($mdp == $compte[4]){
                 session_start();
                 $_SESSION['token'] = $compte[0] . ';administration';
+
+                include("../../trombi-etu/api/saveLog.php");
+                $log = array();
+                $log['Action'] = "Connexion: " . $compte[0];
+                $log['Type'] = "Connexion";
+                saveLog($log, ["../../trombi-admin/files/logs_administration.json"]);
+
                 header('Location: ../../trombi-admin/administration.php');
             }
             else{
                 header('Location: ../../trombi-admin/index.php?error=2');
             }
         }
-
     }
 
     checkID();

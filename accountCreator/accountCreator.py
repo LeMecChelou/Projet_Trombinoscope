@@ -3,6 +3,18 @@ import hashlib
 from setup import *
 
 
+def getRandomString():
+
+    random_string = str()
+    for k in range(13):
+        if random.randint(0, 1) == 1:
+            random_string += chr(random.randint(97, 122))
+        else:
+            random_string += chr(random.randint(48, 57))
+
+    return random_string
+
+
 def createPhone():
 
     phone = "06"
@@ -28,14 +40,15 @@ for nb in range(nb_comptes):
     nom = random.choice(NOMS)
     filiere = random.choice(FILIERES)
     groupe = random.choice(GROUPES[filiere])
-    phone = createPhone()
 
     idt = (prenom[0] + nom).lower()
     mail = (prenom + "." + nom + "@gmail.com").lower()
 
-    mdp = (nom[0] + prenom).lower().encode()
-    m_hash.update(mdp)
+    random_string = getRandomString()
 
-    compte = "{};{};{};{};{};{};{};{};{};{}\n".format(idt, prenom, nom, filiere, groupe, mail, phone, ADRESSE,
-                                                   m_hash.hexdigest(), DIR_PP)
+    mdp = (nom[0] + prenom).lower().encode()
+    m_hash.update(mdp + random_string.encode())
+
+    compte = "{};{};{};{};{};{};{};{};{};{};{}\n".format(idt, prenom, nom, filiere, groupe, mail, createPhone(), ADRESSE
+                                                         , m_hash.hexdigest(), random_string, DIR_PP)
     saveAccount(compte)

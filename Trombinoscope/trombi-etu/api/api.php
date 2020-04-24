@@ -71,6 +71,7 @@
                 return json_encode($data);
             }
 
+            addLog('Erreur *all* -> valeur fausse.');
             $data['Error'] = "La valeur de *all* est fausse (valeur = 1).";
             return json_encode($data);
         }
@@ -84,6 +85,7 @@
                     $group_only = true;
                 }
                 else{
+                    addLog('Erreur *grp* -> valeur fausse.');
                     $data['Error'] = "La valeur de *grp* est fausse (valeur = 1).";
                     return json_encode($data);
                 }
@@ -102,6 +104,7 @@
                 }
             }
 
+            addLog("Erreur *filiere* -> La filière n'existe pas.");
             $data['Error'] = "La filière " . $_GET['filiere'] . " n'existe pas.";
             return json_encode($data);
         }
@@ -119,6 +122,7 @@
                 }
             }
 
+            addLog("Erreur *groupe* -> Le groupe n'existe pas.");
             $data['Error'] = "Le groupe " . $_GET['groupe'] . " n'existe pas.";
             return json_encode($data);
         }
@@ -134,6 +138,7 @@
                 return json_encode($data);
             }
 
+            addLog("Erreur *all_etu* -> valeur fausse.");
             $data['Error'] = "La valeur de *all_etu* est fausse (valeur = 1).";
             return json_encode($data);
         }
@@ -152,6 +157,7 @@
                 }
             }
 
+            addLog("Erreur *etu* -> l'identifiant n'existe pas.");
             $data['Error'] = "L'étudiant " . $_GET['etu'] . " n'existe pas.";
         }
 
@@ -184,6 +190,10 @@
         }
         else if ($infos[2] < 100){
             $infos[2] += 1;
+
+            if ($infos[2] == 100){
+                addLog("limite atteinte");
+            }
 
             $new_fichier = array();
             $new_fichier[] = $infos;
@@ -223,6 +233,8 @@
                     }
                 }
             }
+
+            addLog("Tentative de connexion avec une clé d'API fausse/inexistante.");
             $data['Error'] = "La clé d'API n'existe pas.";
             return json_encode($data);
         }
@@ -235,29 +247,51 @@
 
     function addLog($request){
 
-        $time_actu = " | " . date("d/m/Y - h:i:s");
+        $log = array();
+
         if ($request == "all"){
-            $log = "Requete: 'all'" . $time_actu . "\n";
+            $log['Action'] = "Requete: 'all'";
         }
         else if ($request == "filiere-grp_only"){
-            $log = "Requete: 'filiere-grp_only'" . $time_actu . "\n";
+            $log['Action'] = "Requete: 'filiere-grp_only'";
         }
         else if ($request == "filiere"){
-            $log = "Requete: 'filiere'" . $time_actu . "\n";
+            $log['Action'] = "Requete: 'filiere'";
         }
         else if ($request == "groupe"){
-            $log = "Requete: 'groupe'" . $time_actu . "\n";
+            $log['Action'] = "Requete: 'groupe'";
         }
         else if ($request == "all_etu"){
-            $log = "Requete: 'all_etu'" . $time_actu . "\n";
+            $log['Action'] = "Requete: 'all_etu'";
         }
         else if ($request == "etu"){
-            $log = "Requete: 'etu'" . $time_actu . "\n";
+            $log['Action'] = "Requete: 'etu'";
+        }
+        else if ($request == "limite atteinte"){
+            $log['Action'] = $request;
+        }
+        else if ($request == "Erreur *all* -> valeur fausse."){
+            $log['Action'] = $request;
+        }
+        else if ($request == "Erreur *filiere* -> filiere inexistante."){
+            $log['Action'] = $request;
+        }
+        else if ($request == "Erreur *groupe* -> groupe inexistant."){
+            $log['Action'] = $request;
+        }
+        else if ($request == "Erreur *all_etu* -> valeur fausse."){
+            $log['Action'] = $request;
+        }
+        else if ($request == "Erreur *etu* -> l'identifiant n'existe pas."){
+            $log['Action'] = $request;
+        }
+        else if ($request == "Tentative de connexion avec une clé d'API fausse/inexistante."){
+            $log['Action'] = $request;
         }
 
-        $fichier = fopen("../files/api_logs.json", "a");
-        fwrite($fichier, $log);
-        fclose($fichier);
+        $log['Type'] = 'API';
+        include("./saveLog.php");
+        saveLog($log, ["../files/logs_api.json", "../files/logs_etu.json"]);
     }
 
 

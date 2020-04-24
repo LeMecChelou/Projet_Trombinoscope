@@ -7,11 +7,11 @@
 
             if ($token == "etudiant"){
                 $fichier = file('../../trombi-etu/files/etudiants.csv');
-                $mdp_verif = hash("sha256", $_POST['verif_mdp']);
 
                 for ($k = 0; $k < sizeof($fichier); $k++){
                     $ligne = explode(";", rtrim($fichier[$k]));
                     $mdp = $ligne[8];
+                    $mdp_verif = hash("sha256", $_POST['verif_mdp'] . $ligne[9]);
 
                     if ($mdp == $mdp_verif && $id == $ligne[0]){
                         changeInformations($ligne, $fichier, $k);
@@ -22,11 +22,11 @@
             }
             else{
                 $fichier = file('../../trombi-admin/files/administration.csv');
-                $mdp_verif = hash("sha256", $_POST['verif_mdp']);
 
                 for ($k = 0; $k < sizeof($fichier); $k++){
                     $ligne = explode(";", rtrim($fichier[$k]));
                     $mdp = $ligne[6];
+                    $mdp_verif = hash("sha256", $_POST['verif_mdp'] . $ligne[9]);
 
                     if ($mdp == $mdp_verif && $id == $ligne[0]){
                         changeInformations($ligne, $fichier, $k);
@@ -51,6 +51,12 @@
     function changeInformations($compte, $fichier, $pos){
         $type = explode(";", $_SESSION['token'])[1];
         $type = rtrim($type);
+
+        include("../../trombi-etu/api/saveLog.php");
+        $log = array();
+        $log['Action'] = "Changement d'information(s): " . $compte[0];
+        $log['Type'] = "ChangeInfos";
+        saveLog($log, ["../../trombi-etu/files/logs_etu.json"]);
 
         if ($type == 'etudiant'){
             $new_compte = "";
@@ -96,11 +102,12 @@
                 $new_compte = $new_compte . $compte[7] . ";";
             }
             if ($_POST['change_mdp1'] != ""){
-                $mdp1 = hash('sha256', $_POST['change_mdp1']);
-                $new_compte = $new_compte . $mdp1 . ";";
+                $random_string = uniqid();
+                $mdp1 = hash('sha256', $_POST['change_mdp1'] . $random_string);
+                $new_compte = $new_compte . $mdp1 . ";" . $random_string . ";";
             }
             else{
-                $new_compte = $new_compte . $compte[8] . ";";
+                $new_compte = $new_compte . $compte[8] . ";" . $compte[9] . ";";
             }
 
             $error_image = false;
@@ -113,18 +120,18 @@
 
                 if (($size[0] < 160 || $size[0] > 175) || ($size[1] < 160 || $size[1] > 175)){
                     $error_image = true;
-                    $new_compte = $new_compte . $compte[9] . "\n";
+                    $new_compte = $new_compte . $compte[10] . "\n";
                 }
                 else{
                     if ($compte[9] != "None"){
-                        unlink("../../trombi-etu/" . $compte[9]);
+                        unlink("../../trombi-etu/" . $compte[10]);
                     }
                     move_uploaded_file($_FILES['change_pp']['tmp_name'], $dir);
                     $new_compte = $new_compte . "images_etu/$new_name" . "\n";
                 }
             }
             else{
-                $new_compte = $new_compte . $compte[9] . "\n";
+                $new_compte = $new_compte . $compte[10] . "\n";
             }
 
             $fichier[$pos] = $new_compte;
@@ -169,11 +176,12 @@
                 $new_compte = $new_compte . $compte[3] . ";";
             }
             if ($_POST['change_mdp1'] != ""){
-                $mdp1 = hash('sha256', $_POST['change_mdp1']);
-                $new_compte = $new_compte . $mdp1 . ";";
+                $random_string = uniqid();
+                $mdp1 = hash('sha256', $_POST['change_mdp1'] . $random_string);
+                $new_compte = $new_compte . $mdp1 . ";" . $random_string . "\n";
             }
             else{
-                $new_compte = $new_compte . $compte[4] . ";";
+                $new_compte = $new_compte . $compte[4] . ";" . $compte[5] . "\n";
             }
 
             $fichier[$pos] = $new_compte;

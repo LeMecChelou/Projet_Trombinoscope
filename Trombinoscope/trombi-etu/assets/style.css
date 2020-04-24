@@ -257,7 +257,7 @@ body{
     display: inline-block;
     float: right;
     width: 17%;
-    margin-top: -4.35%;
+    margin-top: 5%;
 }
 
 #get_api_key h2{
@@ -306,15 +306,54 @@ body{
 }
 
 #documentation{
+    display: inline-block;
     background-color: white;
     border: black 1px solid;
     width: 75%;
     margin-top: 5%;
+    font-size: 120%;
 }
 
-#titre_documentation{
+#documentation h2{
     padding-top: 1%;
     margin-left: 5%;
+    font-size: 140%;
+}
+
+#documentation h3{
+    font-size: 130%;
+    margin-left: 7%;
+}
+
+.h2_indentation{
+    margin-left: 8%;
+}
+
+.h3_indentation{
+    margin-left: 10%;
+    margin-top: -1%;
+}
+
+.infos_commandes{
+    margin-left: 10%;
+}
+
+span{
+    font-weight: bold;
+}
+
+#documentation table{
+    margin-left: 8%;
+    border-collapse: collapse;
+}
+
+#documentation table td{
+    border: black 1px solid;
+}
+
+.nom_cle_json{
+    font-weight: bold;
+    width: 25%;
 }
 
 

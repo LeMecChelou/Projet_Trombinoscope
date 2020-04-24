@@ -14,12 +14,66 @@
                 <!-- <a href="../index.php"> -->
                 <img id="logo_site" src="assets/logo_site.png" alt="Logo"/>
             </a>
-            <h1>Documentation</h1>
+            <h1>Documentation de l'API</h1>
             <a id="bouton_api" href="./index.php">Compte</a>
         </header>
 
         <div id="documentation">
-            <h2 id="titre_documentation">Documentation</h2>
+            <h2>Documentation</h2>
+                <p class="h2_indentation">
+                    Cette api permet de récupérer des informations sur les étudiants inscrit.
+                </p>
+                <p class="h2_indentation">
+                    Tous les liens de l'API ont pour racine http://benjamin-guirlet.alwaysdata.net/trombi-etu/.
+                </p>
+                <p class="h2_indentation">
+                    Chaque étudiant a comme informations:
+                </p>
+                <table>
+                    <tr><td class="nom_cle_json">ID</td><td>Identifiant de l'étudiant dans l'API.</td></tr>
+                    <tr><td class="nom_cle_json">PRENOM</td><td>Le prénom de l'étudiant.</td></tr>
+                    <tr><td class="nom_cle_json">NOM</td><td>Le nom de l'étudiant.</td></tr>
+                    <tr><td class="nom_cle_json">FILIERE</td><td>La filiere de l'étudiant.</td></tr>
+                    <tr><td class="nom_cle_json">MAIL</td><td>Le mail de l'étudiant.</td></tr>
+                    <tr><td class="nom_cle_json">TELEPHONE</td><td>Le numéro de téléphone de l'étudiant.</td></tr>
+                    <tr><td class="nom_cle_json">ADRESSE</td><td>L'adresse de l'étudiant.</td></tr>
+                    <tr><td class="nom_cle_json">IMAGE</td><td>Le lien vers l'image de profil de l'étudiant.</td></tr>
+                </table>
+
+            <h2>Commandes</h2>
+                <h3>All</h3>
+                    <p class="h3_indentation">
+                        Permet de récupérer toutes les filières avec leurs groupes et leurs étudiants.
+                    </p>
+                    <ul class="infos_commandes">
+                       <li><span>Requête</span>: /api/api.php?key=*key*&all=1</li>
+                        <li><span>Paramètres</span>: <ul><li>key: la clé d'API de l'utilisateur.</li><li>all: 1 -> la commande pour tout afficher.</li></ul></li>
+                    </ul>
+
+                <h3>Filières</h3>
+                    <p class="h3_indentation">
+                        Permet de récupérer les groupes et étudiants d'une filière.
+                    </p>
+                    <ul class="infos_commandes">
+                        <li><span>Requête</span>: /api/api.php?key=*key*&filiere=*filiere*[&grp=1]</li>
+                        <li><span>Paramètres</span>: <ul><li>key: la clé d'API de l'utilisateur.</li><li>filiere: le nom de la filière demandée.</li><li>grp: [optionnel] -> 1 pour afficher uniquement les groupes et pas les étudiants</li></ul></li>
+                    </ul>
+                <h3>Groupe</h3>
+                    <p class="h3_indentation">
+                        Permet de récupérer les étudiants d'un groupe.
+                    </p>
+                    <ul class="infos_commandes">
+                        <li><span>Requête</span>: /api/api.php?key=*key*&groupe=*groupe*</li>
+                        <li><span>Paramètres</span>: <ul><li>key: la clé d'API de l'utilisateur.</li><li>groupe: le nom du groupe.</li></ul></li>
+                    </ul>
+                <h3>Étudiants</h3>
+                    <p class="h3_indentation">
+                        Permet de récupèrer, soit tout les étudiants, soit un étudiant (au choix). Il faut donc entrer uniquement un des deux paramètres.
+                    </p>
+                    <ul class="infos_commandes">
+                        <li><span>Requête</span>: /api/api.php?key=*key*&filiere=*filiere*[&grp=1]</li>
+                        <li><span>Paramètres</span>: <ul><li>key: la clé d'API de l'utilisateur.</li><li>all_etu: 1 -> renvoi tout les utilisateurs.</li><li>etu: identifiant de l'étudiant. Renvoi l'étudiant spécifié.</li></ul></li>
+                    </ul>
 
         </div>
         <div id="get_api_key">
