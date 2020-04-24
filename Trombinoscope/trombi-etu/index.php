@@ -22,7 +22,7 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8"/>
         <title>Étudiants</title>
         <link rel="stylesheet" type="text/css" href="assets/style.css"/>
         <script src="../scripts/Javascript/formsButtons.js"></script>

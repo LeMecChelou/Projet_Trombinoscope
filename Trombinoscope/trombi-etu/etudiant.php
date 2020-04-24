@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8"/>
         <title>Étudiants</title>
         <link rel="stylesheet" type="text/css" href="assets/style.css"/>
         <script src='./scripts/changeInformations.js'></script>
@@ -40,7 +40,6 @@
                             }
                         ?>
                     </p>
-                    <table id="table_info_etu">
                         <?php
                             session_start();
                             if (isset($_SESSION['token'])){
@@ -60,9 +59,10 @@
                                         }
 
                                         echo "<p id='erreur_image_profil'></p>";
+                                        echo "<table id=\"table_info_etu\">";
 
                                         echo "<tr><td class='colonne_titre'>Identifiant:</td><td>$ligne[0]</td></tr>";
-                                        echo "<tr><td class='colonne_titre'>Identifiant API:</td><td>" . $ligne[0][0] . $k . "</td>";
+                                        echo "<tr><td class='colonne_titre'>Identifiant API:</td><td>" . $ligne[0][0] . $k . "</td></tr>";
                                         echo "<tr><td class='colonne_titre'>Prénom:</td><td>$ligne[1]</td></tr>";
                                         echo "<tr><td class='colonne_titre'>Nom:</td><td>$ligne[2]</td></tr>";
                                         echo "<tr><td class='colonne_titre'>Filière:</td><td>$ligne[3]</td></tr>";
@@ -70,6 +70,7 @@
                                         echo "<tr><td class='colonne_titre'>Mail:</td><td>$ligne[5]</td></tr>";
                                         echo "<tr><td class='colonne_titre'>Numéro:</td><td>$ligne[6]</td></tr>";
                                         echo "<tr><td class='colonne_titre'>Adresse:</td><td>$ligne[7]</td></tr>";
+                                        echo "</table>";
 
                                     }
                                 }
@@ -79,7 +80,6 @@
                             }
 
                         ?>
-                    </table>
                     <button id="bouton_change_infos" onclick='changeHTMLInformations();'>Changer les informations</button>
                 </div>
             </div>
