@@ -5,6 +5,7 @@
         <title>Documentation</title>
         <link rel="stylesheet" type="text/css" href="assets/style.css"/>
         <script src="./scripts/getApiKey.js"></script>
+        <script src="./scripts/getBackApiKey.js"></script>
 
     </head>
 
@@ -24,7 +25,10 @@
                     Cette api permet de récupérer des informations sur les étudiants inscrit.
                 </p>
                 <p class="h2_indentation">
-                    Tous les liens de l'API ont pour racine http://benjamin-guirlet.alwaysdata.net/trombi-etu/.
+                    Tous les liens de l'API ont pour racine: http://benjamin-guirlet.alwaysdata.net/trombi-etu/
+                </p>
+                <p class="h2_indentation">
+                    Url de l'API: <a href="./api/api.php" target="_blank">benjamin-guirlet.alwaysdata.net/trombi-etu/api/api.php</a>
                 </p>
                 <p class="h2_indentation">
                     Chaque étudiant a comme informations:
@@ -77,8 +81,8 @@
 
         </div>
         <div id="get_api_key">
-            <h2>Récupérer votre clé d'API</h2>
-                <p id="key_api_paragraphe">
+            <h2>Demander votre clé d'API</h2>
+                <p class="key_api_paragraphe">
                     <?php
                         if (isset($_GET['key'])){
                             if ($_GET['key'] == '1'){
@@ -91,10 +95,32 @@
                     ?>
                 </p>
                 <form id="formulaire_mail_api" method="post" action="./scripts/saveApiKey.php">
-                    <label id="label_mail_api_key" for="mail_api_key">Entrez votre mail:</label>
-                    <input type="text" id="mail_api_key" name="mail_api_key"/>
-                    <p id="erreur_mail_api"></p>
-                    <input type="button" id="bouton_mail_key" value="Générer la clé d'API" onclick="getApiKey();">
+                    <label class="label_mail" id="label_mail_api_key" for="mail_api_key">Entrez votre mail:</label>
+                    <input type="text" class="mail_api_key_class" id="mail_api_key" name="mail_api_key"/>
+                    <p class="erreur_mail_api" id="erreur_get"></p>
+                    <input type="button" class="bouton_mail_key" id="bouton_mail_key" value="Générer la clé d'API" onclick="getApiKey();">
+                </form>
+        </div>
+        <div id="get_back_api_key">
+            <h2>Retrouver votre clé d'API</h2>
+                <p class="key_api_paragraphe">
+                    <?php
+                        if (isset($_GET['key_back'])){
+                            if ($_GET['key_back'] == '1'){
+                                echo "Vous n'avez pas de clé.";
+                            }
+                            else{
+                                echo "Votre clé est: " . $_GET['key_back'];
+                            }
+                        }
+                    ?>
+                </p>
+
+                <form id="form_back_mail_api" method="post" action="./scripts/getBackApiKey.php">
+                    <label class="label_mail" id="label_mail_back_key" for="mail_back_key">Entrez votre mail:</label>
+                    <input type="text" class="mail_api_key_class" id="mail_back_key" name="mail_back_key"/>
+                    <p class="erreur_mail_api" id="erreur_back"></p>
+                    <input type="button" class="bouton_mail_key" id="bouton_back_key" value="Récupérer la clé d'API" onclick="getBackApiKey();">
                 </form>
         </div>
     </body>

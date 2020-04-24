@@ -1,20 +1,21 @@
 <?php
-if (isset($_SESSION)){
-    $token = explode(';', $_SESSION['token']);
+    session_start();
+    if (isset($_SESSION['token'])){
+        $token = explode(';', $_SESSION['token']);
 
-    if ($token[1] == 'administration'){
-        $fichier = file("./files/administration.csv");
+        if ($token[1] == 'administration'){
+            $fichier = file("./files/administration.csv");
 
-        for ($k = 0; $k < sizeof($fichier); $k++){
-            $ligne = str_replace("\n", "", $fichier[$k]);
-            $ligne = explode(";", $ligne);
+            for ($k = 0; $k < sizeof($fichier); $k++){
+                $ligne = str_replace("\n", "", $fichier[$k]);
+                $ligne = explode(";", $ligne);
 
-            if ($ligne[0] == $token[0]){
-                header('Location: ./administration.php');
+                if ($ligne[0] == $token[0]){
+                    header('Location: ./administration.php');
+                }
             }
         }
     }
-}
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +56,7 @@ if (isset($_SESSION)){
                     <input type="text" id="input_id" class="input_form" name="input_id"/>
 
                     <label class="input_label" for="input_mdp">Mot de passe</label>
-                    <input type="password" id="input_mdp" class="input_form" name="input_passwd"/>
+                    <input type="password" id="input_mdp" class="input_form" name="input_mdp"/>
 
                     <p id='erreur_formulaire'>
                         <?php

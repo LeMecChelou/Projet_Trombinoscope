@@ -46,8 +46,9 @@ for nb in range(nb_comptes):
 
     random_string = getRandomString()
 
-    mdp = (nom[0] + prenom).lower().encode()
-    m_hash.update(mdp + random_string.encode())
+    mdp = (nom[0] + prenom).lower()
+    m_hash.update((mdp + random_string).encode())
+    print(idt, mdp)
 
     compte = "{};{};{};{};{};{};{};{};{};{};{}\n".format(idt, prenom, nom, filiere, groupe, mail, createPhone(), ADRESSE
                                                          , m_hash.hexdigest(), random_string, DIR_PP)

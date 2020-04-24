@@ -1,28 +1,157 @@
 body{
-    font-family: Calibri, serif;
-    background-color: gray;
-    margin: 0;
+	font-family: Calibri, serif;
+	background-color: gray;
+	margin: 0;
 }
 
 
-#boutons{
-	display: flex;
-	margin-top: 20%;
-	margin-left: 42.5%;
+/* ------------------------------------------ */
+/*          Site de l'administration          */
+/* ------------------------------------------ */
+#header{
+	background-color: #953782;
+	color: white;
+	margin-top: 0;
+	padding-left: 1%;
+	padding-top: 0.5%;
+	padding-bottom: 0.5%;
 }
 
-.bouton_choix_site{
+#header h1{
+	display: inline-block;
+}
+
+#header a{
 	text-decoration: none;
-	text-align: center;
-	background-color: #74cb34;
-	padding: 1% 1% 1% 1%;
-	width: 10%;
+}
+
+#logo_site{
+	margin-top: 0.5%;
+	margin-bottom: -0.5%;
+	margin-right: 1%;
+	width: 3%;
+}
+
+#conteneur_choix{
+	background-color: white;
+	margin-top: 5%;
+	margin-left: 25%;
+	width: 50%;
+}
+
+#boutons_choix{
+	display:flex;
+}
+
+#bouton_droit{
+	display: inline-block;
+	width: 50%;
 }
 
 #bouton_gauche{
-	margin-right: 1%;
+	display: inline-block;
+	width: 50%;
+	margin-right: 0;
 }
 
+#choix_actif{
+	font-size: 115%;
+	background-color: #953782;
+	color: white;
+	border: black 1px solid;
+	width: 100%;
+	padding-top: 3%;
+	padding-bottom: 3%;
+}
+
+#choix_actif:hover{
+	background-color: #823072;
+}
+
+#choix_inactif{
+	font-size: 115%;
+	background-color: #cccccc;
+	border: black 1px solid;
+	width: 100%;
+	padding-top: 3%;
+	padding-bottom: 3%;
+}
+
+#choix_inactif:hover{
+	background-color: #b3b3b3;
+}
+
+#formulaire{
+	margin-left: 0;
+	margin-bottom: 5%;
+}
+
+.input_label{
+	display: block;
+	font-size: 115%;
+	margin-left: 32.5%;
+	margin-top: 4%;
+}
+
+.input_form{
+	display: block;
+	border: none;
+	border-bottom: black 1px solid;
+	margin-left: 32.5%;
+	width: 35%;
+}
+
+#bouton_submit_form{
+	border: black 1px solid;
+	background-color: #953782;
+	color: white;
+	margin-top: 5%;
+	margin-bottom: 2%;
+	margin-left: 40%;
+	width: 20%;
+	padding-top: 1%;
+	padding-bottom: 1%;
+}
+
+#bouton_submit_form:hover{
+	background-color: #823072;
+}
+
+#bouton_submit_form:active{
+	background-color: #8c8c8c;
+}
+
+.input_form_img{
+	display: block;
+	margin-left: 32.5%;
+	width: 35%;
+}
+
+
+#erreur_formulaire{
+	display: block;
+	margin-left: 32.5%;
+	width: 35%;
+	color: red;
+}
+
+
+/* ------------------------------------------------- */
+/*          Page utilisateur administration          */
+/* ------------------------------------------------- */
+
+#bouton_deco{
+	float:  right;
+	font-size: 120%;
+	color: black;
+	border-left: black 1px solid;
+	margin-top: -0.5%;
+	padding: 2.2% 1% 2.2% 1%;
+}
+
+#bouton_deco:hover{
+	background-color: #823072;
+}
 
 
 

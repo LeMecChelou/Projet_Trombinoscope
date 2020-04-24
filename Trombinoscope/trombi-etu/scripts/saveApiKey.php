@@ -21,6 +21,13 @@
         fwrite($new_fichier, json_encode($fichier));
         fclose($new_fichier);
 
+
+        $log = array();
+        $log['Action'] = "Génération d'une clé d'API.";
+        $log['Type'] = 'API';
+        include("../api/saveLog.php");
+        saveLog($log, ["../files/logs_etu.json"]);
+
         header('Location: ../documentation_api.php?key=' . $_POST['key_api']);
     }
 

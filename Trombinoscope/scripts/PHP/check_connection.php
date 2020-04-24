@@ -5,7 +5,7 @@
             $fichier = file("../../trombi-etu/files/etudiants.csv");
         }
         else{
-            $fichier = file("../../trombi-admin/files/etudiants.csv");
+            $fichier = file("../../trombi-admin/files/administration.csv");
         }
 
         for ($k = 0; $k < sizeof($fichier); $k++){
@@ -54,12 +54,6 @@
             if ($mdp == $compte[4]){
                 session_start();
                 $_SESSION['token'] = $compte[0] . ';administration';
-
-                include("../../trombi-etu/api/saveLog.php");
-                $log = array();
-                $log['Action'] = "Connexion: " . $compte[0];
-                $log['Type'] = "Connexion";
-                saveLog($log, ["../../trombi-admin/files/logs_administration.json"]);
 
                 header('Location: ../../trombi-admin/administration.php');
             }

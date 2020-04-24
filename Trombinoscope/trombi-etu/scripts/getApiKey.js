@@ -1,7 +1,7 @@
 function getApiKey(){
-    let mail = document.getElementById("bouton_mail_key");
+    let mail = document.getElementById("mail_api_key");
     let form = document.getElementById("formulaire_mail_api");
-    let erreur =document.getElementById("erreur_mail_api");
+    let erreur =document.getElementById("erreur_get");
 
     if (mail.value !== ""){
         let cle = createKey();
