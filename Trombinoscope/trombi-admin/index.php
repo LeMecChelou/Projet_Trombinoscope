@@ -31,8 +31,7 @@
 
     <body>
         <header id="header">
-            <a href="http://benjamin-guirlet.yo.fr">
-                <!-- <a href="../index.php"> -->
+            <a href="http://bguirlet.alwaysdata.net/">
                 <img id="logo_site" src="assets/logo_site.png" alt="Logo"/>
             </a>
             <h1>Administration</h1>

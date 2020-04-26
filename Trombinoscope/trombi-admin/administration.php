@@ -12,8 +12,7 @@
 
     <body>
         <header id="header">
-            <a href="http://benjamin-guirlet.yo.fr">
-                <!-- <a href="../index.php"> -->
+            <a href="http://bguirlet.alwaysdata.net/">
                 <img id="logo_site" src="assets/logo_site.png" alt="Logo"/>
             </a>
 
@@ -48,8 +47,7 @@
             <h2>Paramètres</h2>
                 <label class="label_select_parametres" for="select_filiere">Sélectionner une filière:</label>
                 <select id="select_filiere" class="select_parametres" onchange="getGroups();">
-                    <option value="all" selected="selected">Toutes les filières</option>
-                    <option value="L1-MIPI">L1-MIPI</option>
+                    <option value="L1-MIPI" selected="selected">L1-MIPI</option>
                     <option value="L2-MI">L2-MI</option>
                     <option value="L3-I">L3-I</option>
                     <option value="LP RS">LP RS</option>
@@ -59,10 +57,12 @@
                 <label class="label_select_parametres" for="select_groupe">Sélectionnez le groupe:</label>
                 <select id="select_groupe" class="select_parametres">
                     <option value="all" selected="selected">Tous les groupes</option>
+                    <option value='A1'>A1</option>
+                    <option value='A2'>A2</option>
+                    <option value='A3'>A3</option>
                 </select>
 
                 <button id="bouton_validation_parametres" onclick="getJSON();">Valider</button>
-
         </div>
 
         <div id="trombinoscope">

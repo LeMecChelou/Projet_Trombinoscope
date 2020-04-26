@@ -11,7 +11,7 @@
         $array_etu['TELEPHONE'] = $etudiant[6];
         $array_etu['ADRESSE'] = $etudiant[7];
         if ($etudiant[9] != "None"){
-            $array_etu['IMAGE'] = "benjamin-guirlet.alwaysdata.net/trombi-etu/" . $etudiant[9];
+            $array_etu['IMAGE'] = "benjamin-guirlet.alwaysdata.net/trombi-etu/" . $etudiant[10];
         }
         else{
             $array_etu['IMAGE'] = "benjamin-guirlet.alwaysdata.net/trombi-etu/assets/pp_none.png";

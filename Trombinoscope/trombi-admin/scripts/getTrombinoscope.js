@@ -37,22 +37,53 @@ function getGroups(){
     }
 }
 
-
+ 
 function getJSON(){
-    let request = new XMLHttpRequest();
+    let filiere = document.getElementById("select_filiere");
+    let groupe = document.getElementById("select_groupe");
 
+    let request = new XMLHttpRequest();
     request.responseType = "json";
 
-    request.onload = function() { createTrombi(request.response); };
+    if (groupe.value === "all"){
+        request.onload = function() { createTrombi(request.response, filiere.value); };
+        request.open("GET", `http://benjamin-guirlet.alwaysdata.net/trombi-etu/api/api.php?key=UxjMfqINLjlpTXYy\\KDRoOcBifrKUa&filiere=${filiere.value}`);
+    }
+    else{
+        request.onload = function() { createTrombi(request.response, groupe.value); };
+        request.open("GET", `http://benjamin-guirlet.alwaysdata.net/trombi-etu/api/api.php?key=UxjMfqINLjlpTXYy\\KDRoOcBifrKUa&groupe=${groupe.value}`);
+    }
 
-    request.open("GET", "http://benjamin-guirlet.alwaysdata.net/trombi-etu/api/api.php?key=UxjMfqINLjlpTXYy\\KDRoOcBifrKUa&all=1");
     request.send();
 
 }
 
 
-function createTrombi(json){
-    console.log(json);
+function createTrombi(json, name){
+    let div_trombi = document.getElementById("trombinoscope");
+    let array_etu = [];
+
+    if (name.length > 2){
+        for (let groupe in json[name]){
+            for (let etudiant in json[name][groupe]){
+                array_etu.push(json[name][groupe][etudiant]);
+            }
+        }
+    }
+    else{
+        for (let etudiant in json[name]){
+            array_etu.push(json[name][etudiant]);
+        }
+    }
+
+    div_trombi.innerHTML = "<table id='table_trombinoscope'><tr>";
+    for (let k = 0; k < array_etu.length; k++){
+        div_trombi.innerHTML += "<td>" +
+            "<img src='" + array_etu[k]['IMAGE'] + "' alt='Image de profil'/></td>";
+
+        console.log("<td><img src='http://" + array_etu[k]['IMAGE'] + "' alt='Image de profil'/></td>")
+    }
+    div_trombi.innerHTML += "</tr></table>";
 }
 
 
