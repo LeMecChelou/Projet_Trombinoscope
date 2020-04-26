@@ -67,7 +67,7 @@
                     $data[$filiere] = getFiliere($etudiants, $groupes, false);
                 }
 
-                addLog("all");
+                addLog("Requete: all");
                 return json_encode($data);
             }
 
@@ -95,10 +95,10 @@
                 if ($filiere == strtoupper($_GET['filiere'])){
                     $data[$filiere] = getFiliere($etudiants, $groupes, $group_only);
                     if ($group_only){
-                        addLog("filiere-grp_only");
+                        addLog("Requete: filiere-grp_only");
                     }
                     else{
-                        addLog("filiere");
+                        addLog("Requete: filiere");
                     }
                     return json_encode($data);
                 }
@@ -116,7 +116,7 @@
                     if ($groupe == strtoupper($_GET['groupe'])){
                         $data[$groupe] = getGroup($etudiants, $groupe);
 
-                        addLog("groupe");
+                        addLog("Requete: groupe");
                         return json_encode($data);
                     }
                 }
@@ -134,7 +134,7 @@
                     $etudiant = explode(";", rtrim($etudiants[$k]));
                     $data[] = getStudent($etudiant, $k);
                 }
-                addLog("all_etu");
+                addLog("Requete: all_etu");
                 return json_encode($data);
             }
 
@@ -152,16 +152,43 @@
                 if ($_GET['etu'] == $id){
                     $data[] = getStudent($etudiant, $k);
 
-                    addLog("etu");
+                    addLog("Requete: etu");
                     return json_encode($data);
                 }
             }
 
             addLog("Erreur *etu* -> l'identifiant n'existe pas.");
             $data['Error'] = "L'étudiant " . $_GET['etu'] . " n'existe pas.";
+            return json_encode($data);
         }
 
-        return json_encode($data);
+        // Pour afficher le fichier des logs.
+        if (isset($_GET['log'])){
+            if ($_GET['log'] == "1"){
+                addLog("Requete: log");
+                $data = json_decode(file_get_contents("../files/logs_etu.json"));
+                return json_encode(array_reverse($data));
+            }
+
+            addLog("Erreur *log* -> la valeur de log n'existe pas. Valeur => 1");
+            $data['Error'] = "La valeur de *log* est fausse. log => 1.";
+            return json_encode($data);
+        }
+
+        // Pour afficher le fichier des logs de l'API uniquement.
+        if (isset($_GET['log_api'])){
+            if ($_GET['log_api'] == "1"){
+                addLog("Requete: log_api");
+                $data = json_decode(file_get_contents("../files/logs_api.json"));
+                return json_encode(array_reverse($data));
+            }
+
+            addLog("Erreur *log_api* -> la valeur de log n'existe pas. Valeur => 1");
+            $data['Error'] = "La valeur de *log_api* est fausse. log => 1.";
+            return json_encode($data);
+        }
+
+        return file_get_contents("../files/helpApi.json");
     }
 
 
@@ -249,53 +276,17 @@
 
         $log = array();
 
-        if ($request == "all"){
-            $log['Action'] = "Requete: 'all'";
-        }
-        else if ($request == "filiere-grp_only"){
-            $log['Action'] = "Requete: 'filiere-grp_only'";
-        }
-        else if ($request == "filiere"){
-            $log['Action'] = "Requete: 'filiere'";
-        }
-        else if ($request == "groupe"){
-            $log['Action'] = "Requete: 'groupe'";
-        }
-        else if ($request == "all_etu"){
-            $log['Action'] = "Requete: 'all_etu'";
-        }
-        else if ($request == "etu"){
-            $log['Action'] = "Requete: 'etu'";
-        }
-        else if ($request == "limite atteinte"){
-            $log['Action'] = $request;
-        }
-        else if ($request == "Erreur *all* -> valeur fausse."){
-            $log['Action'] = $request;
-        }
-        else if ($request == "Erreur *filiere* -> filiere inexistante."){
-            $log['Action'] = $request;
-        }
-        else if ($request == "Erreur *groupe* -> groupe inexistant."){
-            $log['Action'] = $request;
-        }
-        else if ($request == "Erreur *all_etu* -> valeur fausse."){
-            $log['Action'] = $request;
-        }
-        else if ($request == "Erreur *etu* -> l'identifiant n'existe pas."){
-            $log['Action'] = $request;
-        }
-        else if ($request == "Tentative de connexion avec une clé d'API fausse/inexistante."){
-            $log['Action'] = $request;
-        }
-
+        $log['Action'] = $request;
         $log['Type'] = 'API';
+
         include("./saveLog.php");
         saveLog($log, ["../files/logs_api.json", "../files/logs_etu.json"]);
     }
 
 
     header('Content-type: application/json');
+    // Changer ce header pour mettre le CORS uniquement pour le deuxième site.
+    header("Access-Control-Allow-Origin: *");
     $data = checkAPIKey();
     echo $data;
 ?>

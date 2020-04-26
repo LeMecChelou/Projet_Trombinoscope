@@ -27,13 +27,11 @@ def createPhone():
 
 def saveAccount(account):
 
-    with open("comptes.csv", "a") as fichier:
+    with open("comptes.txt", "a") as fichier:
         fichier.write(account)
 
 
 nb_comptes = int(input("Entrez le nombre de comptes à créer: "))
-
-m_hash = hashlib.sha256()
 
 for nb in range(nb_comptes):
     prenom = random.choice(PRENOMS)
@@ -41,15 +39,17 @@ for nb in range(nb_comptes):
     filiere = random.choice(FILIERES)
     groupe = random.choice(GROUPES[filiere])
 
-    idt = (prenom[0] + nom).lower()
+    tel = createPhone()
+
+    idt = (prenom[0] + nom + tel[3:5]).lower()
     mail = (prenom + "." + nom + "@gmail.com").lower()
 
     random_string = getRandomString()
 
-    mdp = (nom[0] + prenom).lower()
-    m_hash.update((mdp + random_string).encode())
+    mdp = (nom[0] + prenom + random_string).lower()
     print(idt, mdp)
+    mdp = hashlib.sha256(mdp.encode()).hexdigest()
 
-    compte = "{};{};{};{};{};{};{};{};{};{};{}\n".format(idt, prenom, nom, filiere, groupe, mail, createPhone(), ADRESSE
-                                                         , m_hash.hexdigest(), random_string, DIR_PP)
+    compte = "{};{};{};{};{};{};{};{};{};{};{}\n".format(idt, prenom, nom, filiere, groupe, mail, tel, ADRESSE
+                                                         , mdp, random_string, DIR_PP)
     saveAccount(compte)

@@ -153,6 +153,46 @@ body{
 	background-color: #823072;
 }
 
+#parametres{
+	background-color: white;
+	width: 15%;
+	margin-left: 5%;
+}
+
+#parametres h2{
+	padding-top: 4%;
+	margin-right: 2%;
+	margin-left: 10%;
+}
+
+.label_select_parametres{
+	margin-left: 5%;
+}
+
+.select_parametres{
+	display: block;
+	margin-left: 7%;
+	margin-top: 1%;
+	margin-bottom: 3%;
+}
+
+#bouton_validation_parametres{
+	border: black 1px solid;
+	background-color: #953782;
+	color: white;
+	margin-left: 40%;
+	margin-top: 5%;
+	margin-bottom: 3%;
+	padding: 2% 4% 2% 4%;
+}
+
+#bouton_validation_parametres:hover{
+	background-color: #823072;
+}
+
+#bouton_validation_parametres:active{
+	background-color: #8c8c8c;
+}
 
 
 

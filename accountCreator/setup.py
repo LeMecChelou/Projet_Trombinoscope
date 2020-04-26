@@ -18,6 +18,6 @@ FILIERES = ['L1-MIPI', "L2-MI", "L3-I", "LP RS", "LPI-RIWS"]
 GROUPES = {"L1-MIPI": ["A1", "A2", "A3"], "L2-MI": ['B1', "B2", "B3"], "L3-I": ['C1', 'C2', 'C3'],
            "LP RS": ['D1', 'D2', 'D3'], "LPI-RIWS": ['E1', 'E2', 'E3']}
 
-DIR_PP = "images_etu/none_pp.jpg"
+DIR_PP = "assets/pp_none.png"
 
 ADRESSE = "6, rue de Paris"
