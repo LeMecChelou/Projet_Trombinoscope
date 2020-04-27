@@ -11,7 +11,7 @@
         $array_etu['TELEPHONE'] = $etudiant[6];
         $array_etu['ADRESSE'] = $etudiant[7];
         if ($etudiant[9] != "None"){
-            $array_etu['IMAGE'] = "benjamin-guirlet.alwaysdata.net/trombi-etu/" . $etudiant[10];
+            $array_etu['IMAGE'] = "http://benjamin-guirlet.alwaysdata.net/trombi-etu/" . $etudiant[10];
         }
         else{
             $array_etu['IMAGE'] = "benjamin-guirlet.alwaysdata.net/trombi-etu/assets/pp_none.png";
@@ -67,11 +67,9 @@
                     $data[$filiere] = getFiliere($etudiants, $groupes, false);
                 }
 
-                addLog("Requete: all");
                 return json_encode($data);
             }
 
-            addLog('Erreur *all* -> valeur fausse.');
             $data['Error'] = "La valeur de *all* est fausse (valeur = 1).";
             return json_encode($data);
         }
@@ -85,7 +83,6 @@
                     $group_only = true;
                 }
                 else{
-                    addLog('Erreur *grp* -> valeur fausse.');
                     $data['Error'] = "La valeur de *grp* est fausse (valeur = 1).";
                     return json_encode($data);
                 }
@@ -94,17 +91,10 @@
             foreach ($filieres as $filiere => $groupes){
                 if ($filiere == strtoupper($_GET['filiere'])){
                     $data[$filiere] = getFiliere($etudiants, $groupes, $group_only);
-                    if ($group_only){
-                        addLog("Requete: filiere-grp_only");
-                    }
-                    else{
-                        addLog("Requete: filiere");
-                    }
                     return json_encode($data);
                 }
             }
 
-            addLog("Erreur *filiere* -> La filière n'existe pas.");
             $data['Error'] = "La filière " . $_GET['filiere'] . " n'existe pas.";
             return json_encode($data);
         }
@@ -116,13 +106,11 @@
                     if ($groupe == strtoupper($_GET['groupe'])){
                         $data[$groupe] = getGroup($etudiants, $groupe);
 
-                        addLog("Requete: groupe");
                         return json_encode($data);
                     }
                 }
             }
 
-            addLog("Erreur *groupe* -> Le groupe n'existe pas.");
             $data['Error'] = "Le groupe " . $_GET['groupe'] . " n'existe pas.";
             return json_encode($data);
         }
@@ -134,11 +122,9 @@
                     $etudiant = explode(";", rtrim($etudiants[$k]));
                     $data[] = getStudent($etudiant, $k);
                 }
-                addLog("Requete: all_etu");
                 return json_encode($data);
             }
 
-            addLog("Erreur *all_etu* -> valeur fausse.");
             $data['Error'] = "La valeur de *all_etu* est fausse (valeur = 1).";
             return json_encode($data);
         }
@@ -152,12 +138,10 @@
                 if ($_GET['etu'] == $id){
                     $data[] = getStudent($etudiant, $k);
 
-                    addLog("Requete: etu");
                     return json_encode($data);
                 }
             }
 
-            addLog("Erreur *etu* -> l'identifiant n'existe pas.");
             $data['Error'] = "L'étudiant " . $_GET['etu'] . " n'existe pas.";
             return json_encode($data);
         }
@@ -165,12 +149,10 @@
         // Pour afficher le fichier des logs.
         if (isset($_GET['log'])){
             if ($_GET['log'] == "1"){
-                addLog("Requete: log");
                 $data = json_decode(file_get_contents("../files/logs_etu.json"));
                 return json_encode(array_reverse($data));
             }
 
-            addLog("Erreur *log* -> la valeur de log n'existe pas. Valeur => 1");
             $data['Error'] = "La valeur de *log* est fausse. log => 1.";
             return json_encode($data);
         }
@@ -178,12 +160,10 @@
         // Pour afficher le fichier des logs de l'API uniquement.
         if (isset($_GET['log_api'])){
             if ($_GET['log_api'] == "1"){
-                addLog("Requete: log_api");
                 $data = json_decode(file_get_contents("../files/logs_api.json"));
                 return json_encode(array_reverse($data));
             }
 
-            addLog("Erreur *log_api* -> la valeur de log n'existe pas. Valeur => 1");
             $data['Error'] = "La valeur de *log_api* est fausse. log => 1.";
             return json_encode($data);
         }
@@ -217,10 +197,6 @@
         }
         else if ($infos[2] < 100){
             $infos[2] += 1;
-
-            if ($infos[2] == 100){
-                addLog("limite atteinte");
-            }
 
             $new_fichier = array();
             $new_fichier[] = $infos;
@@ -261,7 +237,6 @@
                 }
             }
 
-            addLog("Tentative de connexion avec une clé d'API fausse/inexistante.");
             $data['Error'] = "La clé d'API n'existe pas.";
             return json_encode($data);
         }

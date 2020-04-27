@@ -60,7 +60,7 @@ function getJSON(){
 
 
 function createTrombi(json, name){
-    let div_trombi = document.getElementById("trombinoscope");
+    let table_trombi = document.getElementById("table_trombi");
     let array_etu = [];
 
     if (name.length > 2){
@@ -76,14 +76,16 @@ function createTrombi(json, name){
         }
     }
 
-    div_trombi.innerHTML = "<table id='table_trombinoscope'><tr>";
+    let new_trombi = "<table><tr class='ligne_trombi'>";
     for (let k = 0; k < array_etu.length; k++){
-        div_trombi.innerHTML += "<td>" +
-            "<img src='" + array_etu[k]['IMAGE'] + "' alt='Image de profil'/></td>";
-
-        console.log("<td><img src='http://" + array_etu[k]['IMAGE'] + "' alt='Image de profil'/></td>")
+        if (k % 7 === 0 && k !== 0){
+            new_trombi += "</tr><tr class='ligne_trombi'>";
+        }
+        new_trombi += `<td><img src="${array_etu[k]['IMAGE']}" alt="Image de profil" /><p>` +
+            array_etu[k]['NOM'].toUpperCase() + ` ${array_etu[k]['PRENOM']}</p></td>`;
     }
-    div_trombi.innerHTML += "</tr></table>";
+    new_trombi += "</tr></table>";
+    table_trombi.innerHTML += new_trombi;
 }
 
 
