@@ -157,17 +157,6 @@
             return json_encode($data);
         }
 
-        // Pour afficher le fichier des logs de l'API uniquement.
-        if (isset($_GET['log_api'])){
-            if ($_GET['log_api'] == "1"){
-                $data = json_decode(file_get_contents("../files/logs_api.json"));
-                return json_encode(array_reverse($data));
-            }
-
-            $data['Error'] = "La valeur de *log_api* est fausse. log => 1.";
-            return json_encode($data);
-        }
-
         return file_get_contents("../files/helpApi.json");
     }
 

@@ -39,6 +39,13 @@
           "Valeur": "Identifiant de l'étudiant dans l'API.",
           "Ex": "/api/api.php?key=<key>&etu=<identifiant>"
         }
+      },
+      "Logs": {
+        "log": {
+          "Doc": "Permet de récupérer les logs du site étudiant sous forme de json.",
+          "Valeur": "1",
+          "Ex": "/api/api.php?key=<key>&log=1"
+        }
       }
     }
   }
