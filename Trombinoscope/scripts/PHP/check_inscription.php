@@ -9,6 +9,12 @@
             $compte = $_POST['input_id'] . ";" . $_POST['input_prenom'] . ";" . $_POST['input_nom'] . ";" .
                 $_POST['input_filiere'] . ";" . $_POST['input_groupe'] . ";" . $_POST['input_mail'] . ";" .
                 $_POST['input_tel'] . ";" . $_POST['input_adresse'] . ";" . $mdp . ";" . $random_string . ";assets/pp_none.png\n";
+
+            include("../../trombi-etu/api/saveLog.php");
+            $log = array();
+            $log['Action'] = "Inscription: " . $_POST['input_id'];
+            $log['Type'] = "Inscription";
+            saveLog($log, ["../../trombi-etu/files/logs_etu.json"]);
         }
         else{
             # Template du compte ADMINISTRATION dans le CSV:
@@ -16,12 +22,6 @@
             $compte = $_POST['input_id'] . ";" . $_POST['input_prenom'] . ";" . $_POST['input_nom'] . ";" .
                 $_POST['input_mail'] . ";" . $mdp . ";" . $random_string . "\n";
         }
-
-        include("../../trombi-etu/api/saveLog.php");
-        $log = array();
-        $log['Action'] = "Inscription: " . $_POST['input_id'];
-        $log['Type'] = "Inscription";
-        saveLog($log, ["../../trombi-etu/files/logs_etu.json"]);
 
         file_put_contents($_POST['filename'], $compte, FILE_APPEND);
 

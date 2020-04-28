@@ -61,6 +61,7 @@ function getJSON(){
 
 function createTrombi(json, name){
     let table_trombi = document.getElementById("table_trombi");
+    table_trombi.innerHTML = "";
     let array_etu = [];
 
     if (name.length > 2){

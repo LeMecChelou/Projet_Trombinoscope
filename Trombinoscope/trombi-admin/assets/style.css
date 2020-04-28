@@ -130,6 +130,7 @@ body{
 
 #erreur_formulaire{
 	display: block;
+	margin-top: 1%;
 	margin-left: 32.5%;
 	width: 35%;
 	color: red;

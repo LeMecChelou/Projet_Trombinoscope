@@ -1,17 +1,21 @@
-PRENOMS = ["Thibault", "Joseph", "Marie", "Jesus", "Marine", "Quentin", "Ariana", "Florian", "Merle", "Gilbert", "Jean",
-           "Patrick", "Bernard", "Benjamin", "Pierre", "Nathan", "Killian", "Nour", "Eden", "Joel", "Martine", "Martin",
-           "Nicolas", "Francois", "Emmanuel", "Charles", "Jacque", "Jacqueline", "Valerie", "Georges", "Jose", "Robert",
-           "Arthur", "Etienne", "Jean-Remi", "Serge", "Remi", "Theophane", "Thimote", "Clemence", "Damien", "Constance",
-           "Pierre", "Robin", "Claire", "Sophie", "Caroline", "Diana", "Elene", "Tiara", "Christophe", "Christine",
-           "Chrisitina", "Christopher", "Philippe", "Delphine", "Luis", "Maurice", "Markus", "Stirling", "Bob", "Paul",
-           "Jhon", "Louis", "Henry", "Victor", "Guy", "Hans", "Jean-Francois", "Bruce", "Peter", "Pablo", "Ellis"]
+# Création de la liste des prénoms.
+PRENOMS = list()
+with open("fichiers/prenom.csv") as fichier:
+    fichier = fichier.read()
+    fichier = fichier.split("\n")
+    for name in fichier[7:]:
+        PRENOMS.append(name.split(",")[0])
 
-NOMS = ["Thiers", "Macron", "Hollande", "Grevy", "Carnot", "Casimir-Perier", "Faure", "Loubet", "de Gaulle", "Pompidou",
-        "Giscard d'Estaing", "Mitterrand", "Chirac", "Sarkozy", "Hollande", "Auriol", "Coty", "Millerand", "Doumergue",
-        "Doumer", "Lebrun", "Deschanel", "Poincare", "Fallieres", "Gainsbourg", "Gaillard", "Dennehy", "Barrier",
-        "Brassens", "Nahon", "Serina", "Sepulveda", "Chaplin", "Stalter", "Raetz", "Moss", "Benichou", "Marley", "Haddad",
-        "Prine", "Calin", "Calvet", "Hugo", "Calvet", "Calvin", "Williams", "Garcin", "Rosny", "Meyer", "Cesarini",
-        "Bourvil", "Hallyday", "Lee", "Bazin", "Whittingham", "Drucker", "Escobar", "Marsalis", "Curtis", "Portal"]
+
+# Création de la liste des noms de familles.
+NOMS = list()
+with open("fichiers/patronymes.csv") as fichier:
+    fichier = fichier.read()
+    fichier = fichier.split("\n")
+    for name in fichier[7:]:
+        NOMS.append(name.split(",")[0])
+
+del NOMS[len(NOMS) - 1]
 
 FILIERES = ['L1-MIPI', "L2-MI", "L3-I", "LP RS", "LPI-RIWS"]
 

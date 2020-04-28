@@ -87,15 +87,6 @@
                         <li><span>Paramètres</span>: <ul><li>key: la clé d'API de l'utilisateur.</li><li>log: 1</li></ul></li>
                     </ul>
 
-                <h3>Log_api</h3>
-                    <p class="h3_indentation">
-                        Permet de récupèrer les logs de l'API du site étudiant.
-                    </p>
-                    <ul class="infos_commandes">
-                        <li><span>Requête</span>: /api/api.php?key=*key*&log_api=1</li>
-                        <li><span>Paramètres</span>: <ul><li>key: la clé d'API de l'utilisateur.</li><li>log_api: 1</li></ul></li>
-                    </ul>
-
         </div>
         <div id="get_api_key">
             <h2>Demander votre clé d'API</h2>
