@@ -1,39 +1,11 @@
-function getGroups(){
-    let filiere = document.getElementById("select_filiere");
+function getGroups(json_filieres){
+    let filiere = document.getElementById("select_filiere").value;
     let groupes = document.getElementById("select_groupe");
+    groupes.innerHTML = "<option value='all'>Tous les groupes</option>";
 
-    if (filiere.value === "all"){
-        groupes.innerHTML = "<option value='all'>Tous les groupes</option>";
-    }
-    else if (filiere.value === "L1-MIPI"){
-        groupes.innerHTML = "<option value='all'>Tous les groupes</option>\n" +
-            "<option value='A1'>A1</option>\n" +
-            "<option value='A2'>A2</option>\n" +
-            "<option value='A3'>A3</option>\n";
-    }
-    else if (filiere.value === "L2-MI"){
-        groupes.innerHTML = "<option value='all'>Tous les groupes</option>\n" +
-            "<option value='B1'>B1</option>\n" +
-            "<option value='B2'>B2</option>\n" +
-            "<option value='B3'>B3</option>\n";
-    }
-    else if (filiere.value === "L3-I"){
-        groupes.innerHTML = "<option value='all'>Tous les groupes</option>\n" +
-            "<option value='C1'>C1</option>\n" +
-            "<option value='C2'>C2</option>\n" +
-            "<option value='C3'>C3</option>\n";
-    }
-    else if (filiere.value === "LP RS") {
-        groupes.innerHTML = "<option value='all'>Tous les groupes</option>\n" +
-            "<option value='D1'>D1</option>\n" +
-            "<option value='D2'>D2</option>\n" +
-            "<option value='D3'>D3</option>\n";
-    }
-    else if (filiere.value === "LPI-RIWS"){
-        groupes.innerHTML = "<option value='all'>Tous les groupes</option>\n" +
-            "<option value='E1'>E1</option>\n" +
-            "<option value='E2'>E2</option>\n" +
-            "<option value='E3'>E3</option>\n";
+    let tab_groupes = json_filieres[filiere];
+    for (let groupe in tab_groupes){
+        groupes.innerHTML += `<option value='${json_filieres[filiere][groupe]}'>${json_filieres[filiere][groupe]}</option>`;
     }
 }
 

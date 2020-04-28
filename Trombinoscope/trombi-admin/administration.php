@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $json_filieres = file_get_contents("http://benjamin-guirlet.alwaysdata.net/trombi-etu/assets/filieres.json");
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -8,6 +9,11 @@
         <title>Étudiants</title>
         <link rel="stylesheet" type="text/css" href="assets/style.css"/>
         <script src="./scripts/getTrombinoscope.js"></script>
+        <script>
+            function setGroups(){
+                getGroups( <?php echo $json_filieres; ?>);
+            }
+        </script>
     </head>
 
     <body>
@@ -46,7 +52,7 @@
         <div id="parametres">
             <h2>Paramètres</h2>
                 <label class="label_select_parametres" for="select_filiere">Sélectionner une filière:</label>
-                <select id="select_filiere" class="select_parametres" onchange="getGroups();">
+                <select id="select_filiere" class="select_parametres" onchange="setGroups();">
                     <option value="L1-MIPI" selected="selected">L1-MIPI</option>
                     <option value="L2-MI">L2-MI</option>
                     <option value="L3-I">L3-I</option>

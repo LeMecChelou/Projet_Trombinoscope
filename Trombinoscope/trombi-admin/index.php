@@ -27,6 +27,7 @@
         <script src="../scripts/Javascript/formsButtons.js"></script>
         <script src="../scripts/Javascript/checkConnection.js"></script>
         <script src="../scripts/Javascript/checkInscription.js"></script>
+        <script src="../scripts/Javascript/errorIDInscription.js"></script>
     </head>
 
     <body>
@@ -66,10 +67,17 @@
                             if ($_GET['error'] == '2'){
                                 echo 'Mot de passe erroné.';
                             }
+                            if ($_GET['error'] == '1.1'){
+                                echo "Identifiant déjà utilisé.";
+                            }
                         }
                         ?>
                     </p>
                     <input type="button" id="bouton_submit_form" value="Se connecter" onclick="checkConnection();"/>
+
+                    <script>
+                        checkIdError();
+                    </script>
                 </form>
             </div>
         </div>

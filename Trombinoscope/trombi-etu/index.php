@@ -1,4 +1,5 @@
 <?php
+    $json_filieres = file_get_contents("./assets/filieres.json");
     session_start();
     if (isset($_SESSION['token'])){
         $token = explode(';', $_SESSION['token']);
@@ -28,7 +29,12 @@
         <script src="../scripts/Javascript/formsButtons.js"></script>
         <script src="../scripts/Javascript/checkConnection.js"></script>
         <script src="../scripts/Javascript/checkInscription.js"></script>
-
+        <script src="../scripts/Javascript/errorIDInscription.js"></script>
+        <script>
+            function setGroups(){
+                loadGroups( <?php echo $json_filieres; ?> );
+            }
+        </script>
     </head>
 
     <body>
@@ -52,6 +58,7 @@
             </div>
 
             <div id="div_formulaire" class="formulaire_etudiant">
+
                 <form id="formulaire" enctype="multipart/form-data" method="post" action="../scripts/PHP/check_connection.php">
 
                     <label class="input_label" for="input_id">Identifiant</label>
@@ -73,6 +80,10 @@
                         ?>
                     </p>
                     <input type="button" id="bouton_submit_form" value="Se connecter" onclick="checkConnection();"/>
+
+                    <script>
+                        checkIdError();
+                    </script>
                 </form>
             </div>
         </div>

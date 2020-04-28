@@ -20,29 +20,10 @@
                 }
                 header("Location: ../../trombi-etu/etudiant.php?error=2");
             }
-            else{
-                $fichier = file('../../trombi-admin/files/administration.csv');
-
-                for ($k = 0; $k < sizeof($fichier); $k++){
-                    $ligne = explode(";", rtrim($fichier[$k]));
-                    $mdp = $ligne[6];
-                    $mdp_verif = hash("sha256", $_POST['verif_mdp'] . $ligne[9]);
-
-                    if ($mdp == $mdp_verif && $id == $ligne[0]){
-                        changeInformations($ligne, $fichier, $k);
-                        return;
-                    }
-                }
-                header("Location: ../../trombi-admin/administration.php?error=2");
-            }
-
         }
         else{
             if ($token == "etudiant"){
                 header('Location: ../../trombi-etu/etudiant.php?error=1');
-            }
-            else{
-                header('Location: ../../trombi-admin/administration.php?error=1');
             }
         }
     }
@@ -146,51 +127,6 @@
             else{
                 header('Location: ../../trombi-etu/etudiant.php');
             }
-        }
-        else{
-            $new_compte = "";
-
-            if ($_POST['change_id'] != ""){
-                $new_compte = $new_compte . $_POST['change_id'] . ";";
-                $_SESSION['token'] = $_POST['change_id']. ';etudiant';
-            }
-            else{
-                $new_compte = $new_compte . $compte[0] . ";";
-            }
-            if ($_POST['change_prenom'] != ""){
-                $new_compte = $new_compte . $_POST['change_prenom'] . ";";
-            }
-            else{
-                $new_compte = $new_compte . $compte[1] . ";";
-            }
-            if ($_POST['change_nom'] != ""){
-                $new_compte = $new_compte . $_POST['change_nom'] . ";";
-            }
-            else{
-                $new_compte = $new_compte . $compte[2] . ";";
-            }
-            if ($_POST['change_mail'] != ""){
-                $new_compte = $new_compte . $_POST['change_mail'] . ";";
-            }
-            else{
-                $new_compte = $new_compte . $compte[3] . ";";
-            }
-            if ($_POST['change_mdp1'] != ""){
-                $random_string = uniqid();
-                $mdp1 = hash('sha256', $_POST['change_mdp1'] . $random_string);
-                $new_compte = $new_compte . $mdp1 . ";" . $random_string . "\n";
-            }
-            else{
-                $new_compte = $new_compte . $compte[4] . ";" . $compte[5] . "\n";
-            }
-
-            $fichier[$pos] = $new_compte;
-            $new_fichier = fopen('../../trombi-etu/files/etudiants.csv', 'w');
-            for ($k = 0; $k < sizeof($fichier); $k++){
-                fwrite($new_fichier, $fichier[$k]);
-            }
-
-            header('Location: ../../trombi-admin/administration.php');
         }
     }
 

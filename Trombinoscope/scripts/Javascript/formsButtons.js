@@ -72,7 +72,7 @@ function inscription_priority(){
                 "                    <label class='input_label' for='input_mdp2'>Entrez de nouveau le mot de passe</label>\n" +
                 "                    <input type='password' id='input_mdp2' class='input_form' name='input_mdp2'/>\n" +
                 "                    <label class='input_label' for='liste_filieres'>Choix de la filère: </label>\n" +
-                "                    <select id='liste_filieres' class='input_form' name='input_filiere' onchange=\"loadGroups();\">\n" +
+                "                    <select id='liste_filieres' class='input_form' name='input_filiere' onchange=\"setGroups();\">\n" +
                 "                        <option value=''>...</option>\n" +
                 "                        <option value='L1-MIPI'>L1-MIPI</option>\n" +
                 "                        <option value='L2-MI'>L2-MI</option>\n" +
@@ -115,41 +115,12 @@ function inscription_priority(){
 }
 
 
-function loadGroups(){
+function loadGroups(json_filieres){
     let filiere = document.getElementById("liste_filieres").value;
     let groupes =document.getElementById("liste_groupes");
 
-    if (filiere === "L1-MIPI"){
-        groupes.innerHTML = "<option value=''>...</option>" +
-            "<option value='A1'>A1</option>" +
-            "<option value='A2'>A2</option>" +
-            "<option value='A3'>A3</option>";
-    }
-    else if (filiere === "L2-MI"){
-        groupes.innerHTML = "<option value=''>...</option>" +
-            "<option value='B1'>B1</option>" +
-            "<option value='B2'>B2</option>" +
-            "<option value='B3'>B3</option>";
-    }
-    else if (filiere === "L3-I"){
-        groupes.innerHTML = "<option value=''>...</option>" +
-            "<option value='C1'>C1</option>" +
-            "<option value='C2'>C2</option>" +
-            "<option value='C3'>C3</option>";
-    }
-    else if (filiere === "LP RS"){
-        groupes.innerHTML = "<option value=''>...</option>" +
-            "<option value='D1'>D1</option>" +
-            "<option value='D2'>D2</option>" +
-            "<option value='D3'>D3</option>";
-    }
-    else if (filiere === "LPI-RIWS"){
-        groupes.innerHTML = "<option value=''>...</option>" +
-            "<option value='E1'>E1</option>" +
-            "<option value='E2'>E2</option>" +
-            "<option value='E3'>E3</option>";
-    }
-    else{
-        groupes.innerHTML = "<option value=''>...</option>";
+    groupes.innerHTML = "<option value=''>...</option>";
+    for (let groupe in json_filieres[filiere]){
+        groupes.innerHTML += `<option value='${json_filieres[filiere][groupe]}'>${json_filieres[filiere][groupe]}</option>`;
     }
 }
