@@ -84,6 +84,8 @@ function inscription_priority(){
                 "                    <select id='liste_groupes' class='input_form' name='input_groupe'>\n" +
                 "                        <option value=''>...</option>\n" +
                 "                    </select>\n" +
+                "                    <label class=\"input_label\" for=\"input_pp\">Image de profil</label>\n" +
+                "                    <input type=\"file\" id=\"input_pp\" class=\"input_form\" name=\"input_pp\" accept=\".jpg, .jpeg, .png\">\n" +
                 "                    <p id='erreur_formulaire'></p>\n" +
                 "                    <input type='button' id='bouton_submit_form' value='Valider' onclick='checkInscription();'/>\n" +
                 "                </form>";

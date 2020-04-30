@@ -24,6 +24,21 @@ function changeHTMLInformations(){
         "                            <label class=\"titre_change\" for=\"change_adresse\">Adresse:</label>\n" +
         "                            <input type=\"text\" id=\"change_adresse\" class=\"input_change\" name=\"change_adresse\"/>\n" +
         "\n" +
+        "                            <label class=\"titre_change\" for=\"liste_filieres\">Choix de la filière:</label>\n" +
+        "                            <select id=\"liste_filieres\" class=\"input_change\" name=\"change_filiere\" onchange=\"setLoadGroups();\">\n" +
+        "                                <option value=\"\">...</option>\n" +
+        "                                <option value=\"L1-MIPI\">L1-MIPI</option>\n" +
+        "                                <option value=\"L2-MI\">L2-MI</option>\n" +
+        "                                <option value=\"L3-I\">L3-I</option>\n" +
+        "                                <option value=\"LP RS\">LP RS</option>\n" +
+        "                                <option value=\"LPI-RIWS\">LPI-RIWS</option>\n" +
+        "                            </select>\n" +
+        "\n" +
+        "                            <label class=\"titre_change\" for=\"liste_groupes\">Choix du groupe:</label>\n" +
+        "                            <select id=\"liste_groupes\" class=\"input_change\" name=\"change_groupe\">\n" +
+        "                                <option value=\"\">...</option>\n" +
+        "                            </select>\n" +
+        "\n" +
         "                            <label class=\"titre_change\" for=\"change_mdp1\">Nouveau mot de passe:</label>\n" +
         "                            <input type=\"password\" id=\"change_mdp1\" class=\"input_change\" name=\"change_mdp1\"/>\n" +
         "\n" +

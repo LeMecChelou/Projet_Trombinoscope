@@ -24,7 +24,28 @@
                 # ID;PRENOM;NOM;FILIERE;GROUPE;MAIL;TELEPHONE;ADRESSE;MDP;RANDOM_STRING;<SI IMAGE -> 'LINK' ELSE -> None
                 $compte = $_POST['input_id'] . ";" . $_POST['input_prenom'] . ";" . $_POST['input_nom'] . ";" .
                     $_POST['input_filiere'] . ";" . $_POST['input_groupe'] . ";" . $_POST['input_mail'] . ";" .
-                    $_POST['input_tel'] . ";" . $_POST['input_adresse'] . ";" . $mdp . ";" . $random_string . ";assets/pp_none.png\n";
+                    $_POST['input_tel'] . ";" . $_POST['input_adresse'] . ";" . $mdp . ";" . $random_string;
+
+                if ($_FILES["input_pp"]['name'] != ""){
+                    $type = rtrim(explode("/", $_FILES['input_pp']['type'])[1]);
+                    $new_name = $_POST['input_id'] . "." . $type;
+                    $dir = "../../trombi-etu/images_etu/" . $new_name;
+
+                    $size = getimagesize($_FILES['input_pp']['tmp_name']);
+
+                    if (($size[0] < 160 || $size[0] > 175) || ($size[1] < 160 || $size[1] > 175)){
+                        header('Location: ../../trombi-etu/index.php?error=1.2');
+                        return;
+                    }
+                    else{
+                        move_uploaded_file($_FILES['input_pp']['tmp_name'], $dir);
+                        $compte = $compte . ";images_etu/$new_name" . "\n";
+                    }
+                }
+                else{
+                    header('Location: ../../trombi-etu/index.php?error=1.3');
+                    return;
+                }
 
                 include("../../trombi-etu/api/saveLog.php");
                 $log = array();

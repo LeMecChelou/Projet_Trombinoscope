@@ -1,5 +1,7 @@
 import random
 import hashlib
+import time
+import os
 from setup import *
 
 
@@ -27,12 +29,14 @@ def createPhone():
 
 def saveAccount(account):
 
-    with open("fichiers/comptes.txt", "w") as fichier:
+    with open("fichiers/etudiants.csv", "w") as fichier:
         fichier.write(account)
 
 
 nb_comptes = int(input("Entrez le nombre de comptes à créer: "))
 compte = str()
+
+t1 = time.time()
 
 for nb in range(nb_comptes):
     prenom = random.choice(PRENOMS)
@@ -56,3 +60,6 @@ for nb in range(nb_comptes):
                                                           , mdp, random_string, DIR_PP)
 
 saveAccount(compte)
+
+print("La génération a pris:", time.time() - t1, "s")
+os.system('Pause')

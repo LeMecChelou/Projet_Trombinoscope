@@ -62,7 +62,19 @@
                 $new_compte = $new_compte . $compte[2] . ";";
             }
 
-            $new_compte = $new_compte . $compte[3] . ";" . $compte[4] . ";";
+            if ($_POST['change_filiere'] != ""){
+                $new_compte = $new_compte . $_POST['change_filiere'] . ";";
+            }
+            else{
+                $new_compte = $new_compte . $compte[3] . ";";
+            }
+
+            if ($_POST['change_groupe'] != ""){
+                $new_compte = $new_compte . $_POST['change_groupe'] . ";";
+            }
+            else{
+                $new_compte = $new_compte . $compte[4] . ";";
+            }
 
             if ($_POST['change_mail'] != ""){
                 $new_compte = $new_compte . $_POST['change_mail'] . ";";

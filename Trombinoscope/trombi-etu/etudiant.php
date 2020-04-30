@@ -5,6 +5,15 @@
         <title>Étudiants</title>
         <link rel="stylesheet" type="text/css" href="assets/style.css"/>
         <script src='./scripts/changeInformations.js'></script>
+        <script src="../scripts/Javascript/formsButtons.js"></script>
+        <script>
+            function setLoadGroups(){
+                <?php
+                    $json_filiere = file_get_contents("./assets/filieres.json");
+                    echo "loadGroups($json_filiere);";
+                ?>
+            }
+        </script>
     </head>
 
     <body>
@@ -79,6 +88,7 @@
                             }
 
                         ?>
+
                     <button id="bouton_change_infos" onclick='changeHTMLInformations();'>Changer les informations</button>
                 </div>
             </div>
