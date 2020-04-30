@@ -195,6 +195,14 @@ body{
 	background-color: #8c8c8c;
 }
 
+#selection_groupe_filiere{
+	display: inline-block;
+}
+
+#autre_parametres{
+	display: inline-block;
+}
+
 #trombinoscope{
 	background-color: white;
 	width: 90%;
