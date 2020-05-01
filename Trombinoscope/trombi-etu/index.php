@@ -1,23 +1,6 @@
 <?php
-    $json_filieres = file_get_contents("./assets/filieres.json");
-    session_start();
-    if (isset($_SESSION['token'])){
-        $token = explode(';', $_SESSION['token']);
-
-        if ($token[1] == 'etudiant'){
-            $fichier = file("./files/etudiants.csv");
-
-            for ($k = 0; $k < sizeof($fichier); $k++){
-                $ligne = str_replace("\n", "", $fichier[$k]);
-                $ligne = explode(";", $ligne);
-
-                echo $ligne;
-                if ($ligne[0] == $token[0]){
-                    header('Location: ./etudiant.php');
-                }
-            }
-        }
-    }
+    include_once("../scripts/PHP/functions.inc.php");
+    checkToken('./files/etudiants.csv', 'Location: ./etudiant.php', 'etudiant');
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +15,7 @@
         <script src="../scripts/Javascript/errorIDInscription.js"></script>
         <script>
             function setGroups(){
-                loadGroups( <?php echo $json_filieres; ?> );
+                loadGroups( <?php $json_filieres = file_get_contents("./assets/filieres.json"); echo $json_filieres; ?> );
             }
         </script>
     </head>

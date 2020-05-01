@@ -1,0 +1,21 @@
+@page{
+    margin-left: -10%;
+    margin-top: -10%;
+    size: landscape;
+}
+
+header{
+    display: none;
+}
+
+#parametres{
+    display: none;
+}
+
+#impression{
+    display: none;
+}
+
+#trombinoscope{
+    display: block;
+}

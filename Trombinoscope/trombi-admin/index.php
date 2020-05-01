@@ -1,21 +1,6 @@
 <?php
-    session_start();
-    if (isset($_SESSION['token'])){
-        $token = explode(';', $_SESSION['token']);
-
-        if ($token[1] == 'administration'){
-            $fichier = file("./files/administration.csv");
-
-            for ($k = 0; $k < sizeof($fichier); $k++){
-                $ligne = str_replace("\n", "", $fichier[$k]);
-                $ligne = explode(";", $ligne);
-
-                if ($ligne[0] == $token[0]){
-                    header('Location: ./administration.php');
-                }
-            }
-        }
-    }
+    include_once("../scripts/PHP/functions.inc.php");
+    checkToken('./files/administration.csv', 'Location: ./administration.php', 'administration');
 ?>
 
 <!DOCTYPE html>

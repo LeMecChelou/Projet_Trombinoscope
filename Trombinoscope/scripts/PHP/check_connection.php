@@ -34,7 +34,8 @@
 
             if ($mdp == $compte[8]){
                 session_start();
-                $_SESSION['token'] = $compte[0] . ';etudiant';
+                $_SESSION['id'] = $compte[0];
+                $_SESSION['type'] = 'etudiant';
 
                 include("../../trombi-etu/api/saveLog.php");
                 $log = array();
@@ -53,7 +54,8 @@
 
             if ($mdp == $compte[4]){
                 session_start();
-                $_SESSION['token'] = $compte[0] . ';administration';
+                $_SESSION['id'] = $compte[0];
+                $_SESSION['type'] = "administration";
 
                 header('Location: ../../trombi-admin/administration.php');
             }

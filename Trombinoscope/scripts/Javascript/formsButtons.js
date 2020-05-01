@@ -58,7 +58,7 @@ function inscription_priority(){
                 "                    <input type='text' id='input_nom' class='input_form' name='input_nom'/>\n" +
                 "\n" +
                 "                    <label class='input_label' for='input_mail'>Mail</label>\n" +
-                "                    <input type='text' id='input_mail' class='input_form' name='input_mail'/>\n" +
+                "                    <input type='email' id='input_mail' class='input_form' name='input_mail'/>\n" +
                 "\n" +
                 "                    <label class='input_label' for='input_tel'>Numéro de téléphone</label>\n" +
                 "                    <input type='text' id='input_tel' class='input_form' name='input_tel'/>\n" +
@@ -101,7 +101,7 @@ function inscription_priority(){
                 "                    <label class='input_label' for='input_nom'>Nom</label>\n" +
                 "                    <input type='text' id='input_nom' class='input_form' name='input_nom'/>\n" +
                 "                    <label class='input_label' for='input_mail'>Mail</label>\n" +
-                "                    <input type='text' id='input_mail' class='input_form' name='input_mail'/>\n" +
+                "                    <input type='email' id='input_mail' class='input_form' name='input_mail'/>\n" +
                 "                    <label class='input_label' for='input_mdp'>Mot de passe</label>\n" +
                 "                    <input type='password' id='input_mdp' class='input_form' name='input_mdp'/>\n" +
                 "\n" +

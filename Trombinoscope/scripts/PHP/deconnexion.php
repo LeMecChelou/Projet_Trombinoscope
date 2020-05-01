@@ -1,21 +1,21 @@
 <?php
     session_start();
 
-    if (isset($_SESSION['token'])) {
+    if (isset($_SESSION['id'])) {
         $ligne = $_SESSION['token'];
-        $infos = explode(";", rtrim($_SESSION['token']));
-        unset($_SESSION['token']);
 
-        if ($infos[1] == "etudiant"){
+        if ($_SESSION['type'] == "etudiant"){
             include("../../trombi-etu/api/saveLog.php");
             $log = array();
-            $log['Action'] = "Déconnexion: " . $infos[0];
+            $log['Action'] = "Déconnexion: " . $_SESSION['id'];
             $log['Type'] = "Deconnexion";
             saveLog($log, ["../../trombi-etu/files/logs_etu.json"]);
         }
 
-
-        if ($infos[1] == 'etudiant'){
+        $type = $_SESSION['type'];
+        unset($_SESSION['id']);
+        unset($_SESSION['type']);
+        if ($type == 'etudiant'){
             header('Location: ../../trombi-etu/index.php');
         }
         else{
@@ -23,6 +23,6 @@
         }
     }
     else{
-        header("Location: http://benjamin-guirlet.yo.fr");
+        header("Location: http://benjamin-guirlet.alwaysdata.net");
     }
 ?>

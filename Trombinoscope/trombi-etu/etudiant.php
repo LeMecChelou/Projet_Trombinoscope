@@ -50,15 +50,13 @@
                     </p>
                         <?php
                             session_start();
-                            if (isset($_SESSION['token'])){
-                                $id = $_SESSION['token'];
-                                $id = explode(';', $id)[0];
+                            if (isset($_SESSION['id'])){
 
                                 $fichier = file("./files/etudiants.csv");
                                 for ($k = 0; $k < sizeof($fichier); $k++){
                                     $ligne = explode(";", rtrim($fichier[$k]));
 
-                                    if ($id == $ligne[0]){
+                                    if ($_SESSION['id'] == $ligne[0]){
                                         if ($ligne[10] == "None"){
                                             echo "<img id='error' class='image_profil' src='./assets/pp_none.png' alt=\"Image de profil d'erreur.\"/>";
                                         }

@@ -154,19 +154,22 @@ body{
 	background-color: #823072;
 }
 
+
+/* Division Paramètres */
 #parametres{
+	display: inline-block;
 	background-color: white;
 	width: 15%;
 	margin-left: 5%;
+	margin-top: 2%;
 }
 
 #parametres h2{
-	padding-top: 4%;
 	margin-right: 2%;
 	margin-left: 10%;
 }
 
-.label_select_parametres{
+.label_param_trombi{
 	margin-left: 5%;
 }
 
@@ -195,14 +198,32 @@ body{
 	background-color: #8c8c8c;
 }
 
-#selection_groupe_filiere{
+
+/* Division Impression */
+#impression{
 	display: inline-block;
+	margin-left: 5%;
 }
 
-#autre_parametres{
-	display: inline-block;
+#bouton_impression{
+	background-color: #953782;
+	color: white;
+	border: black 1px solid;
+	width: 150%;
+	padding-top: 10%;
+	padding-bottom: 10%;
 }
 
+#bouton_impression:hover{
+	background-color: #823072;
+}
+
+#bouton_impression:active{
+	background-color: #8c8c8c;
+}
+
+
+/* Division Trombinoscope */
 #trombinoscope{
 	background-color: white;
 	width: 90%;
@@ -220,12 +241,16 @@ table{
 	margin-left: 5%;
 	margin-right: 5%;
 	border-collapse: separate;
-	border-spacing: 1cm 2cm;
+	border-spacing: 1.2cm 2.5cm;
 }
 
 p{
 	text-align: center;
 	margin-top: -0.5%;
+}
+
+.infos_supp{
+	margin-top: -1.5%;
 }
 
 
