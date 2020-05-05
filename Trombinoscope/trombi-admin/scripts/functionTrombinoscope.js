@@ -35,7 +35,7 @@ function getJSON(){
 
 
 function createTrombi(json, name){
-    let table_trombi = document.getElementById("table_trombi");
+    let table_trombi = document.getElementById("div_trombi");
     let nb_etu_max = document.getElementById("input_nb_etudiants_max");
 
     table_trombi.innerHTML = "";
@@ -57,22 +57,24 @@ function createTrombi(json, name){
     if (nb_etu_max.value === "0"){
         nb_etu_max.value = array_etu.length;
     }
+    else if (parseInt(nb_etu_max.value) > array_etu.length){
+        nb_etu_max.value = array_etu.length;
+    }
 
-    let new_trombi = "<table><tr class='ligne_trombi'>";
+    let new_trombi = "<div class='ligne_trombi'>";
 
     for (let k = 0; k < nb_etu_max.value; k++){
         if (k % 6 === 0 && k !== 0){
-            new_trombi += "</tr><tr class='ligne_trombi'>";
+            new_trombi += "</div><div class='ligne_trombi'>";
         }
 
-        new_trombi += `<td><img id="img_etu_${k}" src="${array_etu[k]['IMAGE']}" alt="Image de profil" width="200" height="200" onclick="showInformations(this.id);"/><p>` +
-            array_etu[k]['NOM'].toUpperCase() + ` ${array_etu[k]['PRENOM']}</p>` +
+        new_trombi += `<div class="case_trombi"><img id="img_etu_${k}" class="img_etu" src="${array_etu[k]['IMAGE']}" alt="Image de profil" width="200" height="200" onclick="showInformations(this.id);"/><p class="nom_prenom_etu">` +
+            `${array_etu[k]['NOM'].toUpperCase()}</p><p class="nom_prenom_etu">${array_etu[k]['PRENOM']}</p>` +
             `<div id="div_img_etu_${k}" class="div_infos_supp" style="display: none">` +
-            `<p class="infos_supp">${array_etu[k]['MAIL']}</p><p class="infos_supp">${array_etu[k]['TELEPHONE']}</p>` +
-            `<p class="infos_supp">${array_etu[k]['ADRESSE']}</p></div></td>`;
+            `<p class="infos_supp">${array_etu[k]['MAIL']}</p></div></div>`;
     }
 
-    new_trombi += "</tr></table>";
+    new_trombi += "</div>";
     table_trombi.innerHTML += new_trombi;
 }
 

@@ -79,7 +79,7 @@
 
         <div id="trombinoscope">
             <h2>Trombinoscope</h2>
-            <div id="table_trombi">
+            <div id="div_trombi">
             </div>
         </div>
 

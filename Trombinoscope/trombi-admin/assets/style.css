@@ -236,21 +236,33 @@ body{
 	margin-left: 2%;
 }
 
-table{
-	display: flex;
+#div_trombi{
 	margin-left: 5%;
 	margin-right: 5%;
-	border-collapse: separate;
-	border-spacing: 1.2cm 2.5cm;
+	display: flex;
+	flex-wrap: wrap;
 }
 
-p{
+.ligne_trombi{
+	display: block;
+	margin-right: 19px;
+	justify-content: space-around;
+}
+
+.case_trombi{
+	width: 200px;
+	height: 313px;
+	margin-left: 5%;
+}
+
+.nom_prenom_etu{
+	margin-top: -3%;
 	text-align: center;
-	margin-top: -0.5%;
 }
 
 .infos_supp{
-	margin-top: -1.5%;
+	margin-top: -9%;
+	text-align: center;
 }
 
 

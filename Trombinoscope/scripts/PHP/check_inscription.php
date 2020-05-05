@@ -1,4 +1,6 @@
 <?php
+    include("functions.inc.php");
+
     function checkID($chemin){
         $fichier = file($chemin);
 
@@ -70,6 +72,9 @@
                 return;
             }
         }
+
+        $array_compte = file($_POST['filename']);
+        $array_compte[] = $compte;
 
         file_put_contents($_POST['filename'], $compte, FILE_APPEND);
 
