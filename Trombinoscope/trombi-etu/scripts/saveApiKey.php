@@ -25,7 +25,7 @@
         $log = array();
         $log['Action'] = "Génération d'une clé d'API.";
         $log['Type'] = 'API';
-        include("../api/saveLog.php");
+        include("../../scripts/PHP/functions.inc.php");
         saveLog($log, ["../files/logs_etu.json"]);
 
         header('Location: ../documentation_api.php?key=' . $_POST['key_api']);

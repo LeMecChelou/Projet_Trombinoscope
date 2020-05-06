@@ -243,7 +243,7 @@
         $log['Action'] = $request;
         $log['Type'] = 'API';
 
-        include("./saveLog.php");
+        include("../../scripts/PHP/functions.inc.php");
         saveLog($log, ["../files/logs_api.json", "../files/logs_etu.json"]);
     }
 

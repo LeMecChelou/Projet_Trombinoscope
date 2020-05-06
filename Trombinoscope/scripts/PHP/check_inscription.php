@@ -49,7 +49,6 @@
                     return;
                 }
 
-                include("../../trombi-etu/api/saveLog.php");
                 $log = array();
                 $log['Action'] = "Inscription: " . $_POST['input_id'];
                 $log['Type'] = "Inscription";
@@ -76,7 +75,13 @@
         $array_compte = file($_POST['filename']);
         $array_compte[] = $compte;
 
-        file_put_contents($_POST['filename'], $compte, FILE_APPEND);
+        sort($array_compte, SORT_STRING);
+
+        $fichier = fopen($_POST['filename'], "w");
+        foreach ($array_compte as $compte){
+            fwrite($fichier, $compte);
+        }
+        fclose($fichier);
 
         if ($_POST['type'] == 'etudiant'){
             header('Location: ../../trombi-etu/index.php');

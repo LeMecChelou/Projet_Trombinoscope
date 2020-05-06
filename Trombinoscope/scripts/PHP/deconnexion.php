@@ -5,7 +5,7 @@
         $ligne = $_SESSION['token'];
 
         if ($_SESSION['type'] == "etudiant"){
-            include("../../trombi-etu/api/saveLog.php");
+            include("./functions.inc.php");
             $log = array();
             $log['Action'] = "Déconnexion: " . $_SESSION['id'];
             $log['Type'] = "Deconnexion";

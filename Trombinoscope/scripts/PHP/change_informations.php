@@ -33,7 +33,7 @@
         $type = explode(";", $_SESSION['token'])[1];
         $type = rtrim($type);
 
-        include("../../trombi-etu/api/saveLog.php");
+        include("./functions.inc.php");
         $log = array();
         $log['Action'] = "Changement d'information(s): " . $compte[0];
         $log['Type'] = "ChangeInfos";

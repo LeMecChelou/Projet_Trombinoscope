@@ -19,28 +19,19 @@
     }
 
 
-    function triComptes($array){
-        $new_array = array();
-        $full_size = sizeof($array);
+    function saveLog($log, $array_files){
+        $log['Year'] = intval(date('Y'));
+        $log['Month'] = intval(date('m'));
+        $log['Day'] = intval(date('d'));
+        $log['Hour'] = intval(date('H') + 2);
+        $log['Minute'] = intval(date('i'));
+        $log['Second'] = intval(date('s'));
 
-        for ($k = 0; $k < $full_size; $k++){
-            $save_account = $array[0];
-            $ligne_compte = explode(";", rtrim($save_account));
 
-            for ($i = 0; $i < sizeof($array); $i++){
-                $l_compte = explode(";", rtrim($array[$i]));
-
-                if (ord($l_compte[2][0]) < ord($ligne_compte[2][0])){
-                    $pos = $i;
-                    $save_account = $array[$i];
-                    $ligne_compte = $l_compte;
-                }
-            }
-
-            $new_array[] = $save_account;
-            unset($array[$pos]);
+        foreach ($array_files as $file){
+            $fichier = json_decode(file_get_contents($file));
+            $fichier[] = $log;
+            file_put_contents($file, json_encode($fichier), LOCK_EX);
         }
-
-        var_dump($new_array);
     }
 ?>

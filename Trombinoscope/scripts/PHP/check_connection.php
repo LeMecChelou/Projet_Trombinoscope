@@ -37,7 +37,7 @@
                 $_SESSION['id'] = $compte[0];
                 $_SESSION['type'] = 'etudiant';
 
-                include("../../trombi-etu/api/saveLog.php");
+                include("./functions.inc.php");
                 $log = array();
                 $log['Action'] = "Connexion: " . $compte[0];
                 $log['Type'] = "Connexion";

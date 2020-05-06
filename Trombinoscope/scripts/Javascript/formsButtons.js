@@ -61,7 +61,8 @@ function inscription_priority(){
                 "                    <input type='email' id='input_mail' class='input_form' name='input_mail'/>\n" +
                 "\n" +
                 "                    <label class='input_label' for='input_tel'>Numéro de téléphone</label>\n" +
-                "                    <input type='text' id='input_tel' class='input_form' name='input_tel'/>\n" +
+                "                    <input type='tel' id='input_tel' class='input_form' name='input_tel' " +
+                "                    pattern='[0-9]{2}.[0-9]{2}.[0-9]{2}.[0-9]{2}.[0-9]{2}' placeholder='00.00.00.00.00'/>\n" +
                 "\n" +
                 "                    <label class='input_label' for='input_adresse'>Adresse</label>\n" +
                 "                    <input type='text' id='input_adresse' class='input_form' name='input_adresse'/>\n" +
