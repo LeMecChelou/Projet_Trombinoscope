@@ -8,6 +8,45 @@ body{
 /* ------------------------------------------ */
 /*          Site de l'administration          */
 /* ------------------------------------------ */
+
+#conteneur_choix_site{
+	background-color: white;
+	border: black 1px solid;
+	width: 50%;
+	height: 350px;
+	margin-top: 10%;
+	margin-left: 25%;
+}
+
+#titre_choix_site{
+	padding-top: 2%;
+	padding-bottom: 8%;
+	text-align: center;
+}
+
+#boutons{
+	text-align: center;
+}
+
+.bouton_choix_site{
+	display: inline-block;
+	font-size: 150%;
+	text-decoration: none;
+	border-radius: 15px;
+	color: white;
+	width: 15%;
+	background-color: #953782;
+	padding: 4% 4% 4% 4%;
+}
+
+#bouton_site_gauche{
+	margin-right: 25%;
+}
+
+
+/* ------------------------------------------ */
+/*          Site de l'administration          */
+/* ------------------------------------------ */
 #header{
 	background-color: #953782;
 	color: white;

@@ -49,7 +49,7 @@
                         Permet de récupérer toutes les filières avec leurs groupes et leurs étudiants.
                     </p>
                     <ul class="infos_commandes">
-                       <li><span>Requête</span>: /api/api.php?key=*key*&all=1</li>
+                       <li><span>Requête</span>: /api/api.php?key=*key*&amp;all=1</li>
                         <li><span>Paramètres</span>: <ul><li>key: la clé d'API de l'utilisateur.</li><li>all: 1 -> la commande pour tout afficher.</li></ul></li>
                     </ul>
 
@@ -58,7 +58,7 @@
                         Permet de récupérer les groupes et étudiants d'une filière.
                     </p>
                     <ul class="infos_commandes">
-                        <li><span>Requête</span>: /api/api.php?key=*key*&filiere=*filiere*[&grp=1]</li>
+                        <li><span>Requête</span>: /api/api.php?key=*key*&amp;filiere=*filiere*[&amp;grp=1]</li>
                         <li><span>Paramètres</span>: <ul><li>key: la clé d'API de l'utilisateur.</li><li>filiere: le nom de la filière demandée.</li><li>grp: [optionnel] -> 1 pour afficher uniquement les groupes et pas les étudiants</li></ul></li>
                     </ul>
                 <h3>Groupe</h3>
@@ -66,7 +66,7 @@
                         Permet de récupérer les étudiants d'un groupe.
                     </p>
                     <ul class="infos_commandes">
-                        <li><span>Requête</span>: /api/api.php?key=*key*&groupe=*groupe*</li>
+                        <li><span>Requête</span>: /api/api.php?key=*key*&amp;groupe=*groupe*</li>
                         <li><span>Paramètres</span>: <ul><li>key: la clé d'API de l'utilisateur.</li><li>groupe: le nom du groupe.</li></ul></li>
                     </ul>
                 <h3>Étudiants</h3>
@@ -74,7 +74,7 @@
                         Permet de récupèrer, soit tout les étudiants, soit un étudiant (au choix). Il faut donc entrer uniquement un des deux paramètres.
                     </p>
                     <ul class="infos_commandes">
-                        <li><span>Requête</span>: /api/api.php?key=*key*&filiere=*filiere*[&grp=1]</li>
+                        <li><span>Requête</span>: /api/api.php?key=*key*&amp;filiere=*filiere*[&amp;grp=1]</li>
                         <li><span>Paramètres</span>: <ul><li>key: la clé d'API de l'utilisateur.</li><li>all_etu: 1 -> renvoi tout les utilisateurs.</li><li>etu: identifiant de l'étudiant. Renvoi l'étudiant spécifié.</li></ul></li>
                     </ul>
 
@@ -83,7 +83,7 @@
                         Permet de récupèrer les logs du site étudiant.
                     </p>
                     <ul class="infos_commandes">
-                        <li><span>Requête</span>: /api/api.php?key=*key*&log=1</li>
+                        <li><span>Requête</span>: /api/api.php?key=*key*&amp;log=1</li>
                         <li><span>Paramètres</span>: <ul><li>key: la clé d'API de l'utilisateur.</li><li>log: 1</li></ul></li>
                     </ul>
 
@@ -106,7 +106,7 @@
                     <label class="label_mail" id="label_mail_api_key" for="mail_api_key">Entrez votre mail:</label>
                     <input type="text" class="mail_api_key_class" id="mail_api_key" name="mail_api_key"/>
                     <p class="erreur_mail_api" id="erreur_get"></p>
-                    <input type="button" class="bouton_mail_key" id="bouton_mail_key" value="Générer la clé d'API" onclick="getApiKey();">
+                    <input type="button" class="bouton_mail_key" id="bouton_mail_key" value="Générer la clé d'API" onclick="getApiKey();"/>
                 </form>
         </div>
         <div id="get_back_api_key">
@@ -128,7 +128,7 @@
                     <label class="label_mail" id="label_mail_back_key" for="mail_back_key">Entrez votre mail:</label>
                     <input type="text" class="mail_api_key_class" id="mail_back_key" name="mail_back_key"/>
                     <p class="erreur_mail_api" id="erreur_back"></p>
-                    <input type="button" class="bouton_mail_key" id="bouton_back_key" value="Récupérer la clé d'API" onclick="getBackApiKey();">
+                    <input type="button" class="bouton_mail_key" id="bouton_back_key" value="Récupérer la clé d'API" onclick="getBackApiKey();"/>
                 </form>
         </div>
     </body>
