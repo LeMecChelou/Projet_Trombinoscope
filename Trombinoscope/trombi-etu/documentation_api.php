@@ -104,7 +104,7 @@
                 </p>
                 <form id="formulaire_mail_api" method="post" action="./scripts/saveApiKey.php">
                     <label class="label_mail" id="label_mail_api_key" for="mail_api_key">Entrez votre mail:</label>
-                    <input type="text" class="mail_api_key_class" id="mail_api_key" name="mail_api_key"/>
+                    <input type="email" class="mail_api_key_class" id="mail_api_key" name="mail_api_key"/>
                     <p class="erreur_mail_api" id="erreur_get"></p>
                     <input type="button" class="bouton_mail_key" id="bouton_mail_key" value="Générer la clé d'API" onclick="getApiKey();"/>
                 </form>
@@ -126,7 +126,7 @@
 
                 <form id="form_back_mail_api" method="post" action="./scripts/getBackApiKey.php">
                     <label class="label_mail" id="label_mail_back_key" for="mail_back_key">Entrez votre mail:</label>
-                    <input type="text" class="mail_api_key_class" id="mail_back_key" name="mail_back_key"/>
+                    <input type="email" class="mail_api_key_class" id="mail_back_key" name="mail_back_key"/>
                     <p class="erreur_mail_api" id="erreur_back"></p>
                     <input type="button" class="bouton_mail_key" id="bouton_back_key" value="Récupérer la clé d'API" onclick="getBackApiKey();"/>
                 </form>
