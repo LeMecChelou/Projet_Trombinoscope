@@ -64,12 +64,12 @@ function createTrombi(json, name){
     let new_trombi = "<div class='ligne_trombi'>";
 
     for (let k = 0; k < nb_etu_max.value; k++){
-        if (k % 6 === 0 && k !== 0){
+        if (k % 7 === 0 && k !== 0){
             new_trombi += "</div><div class='ligne_trombi'>";
         }
 
-        new_trombi += `<div class="case_trombi"><img id="img_etu_${k}" class="img_etu" src="${array_etu[k]['IMAGE']}" alt="Image de profil" width="200" height="200" onclick="showInformations(this.id);"/><p class="nom_prenom_etu">` +
-            `${array_etu[k]['NOM'].toUpperCase()}</p><p class="nom_prenom_etu">${array_etu[k]['PRENOM']}</p>` +
+        new_trombi += `<div class="case_trombi"><img id="img_etu_${k}" class="img_etu" src="${array_etu[k]['IMAGE']}" alt="Image de profil" width="200" height="200" onclick="showInformations(this.id);"/>` +
+            `<p class="nom_prenom_etu">${array_etu[k]['NOM'].toUpperCase()}</p><p class="nom_prenom_etu">${array_etu[k]['PRENOM']}</p>` +
             `<div id="div_img_etu_${k}" class="div_infos_supp" style="display: none">` +
             `<p class="infos_supp">${array_etu[k]['MAIL']}</p></div></div>`;
     }

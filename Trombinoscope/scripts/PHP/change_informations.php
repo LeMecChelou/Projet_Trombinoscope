@@ -1,8 +1,8 @@
 <?php
     session_start();
     function checkPasswordChange(){
-        $token = rtrim(explode(";", $_SESSION['token'])[1]);
-        $id = rtrim(explode(";", $_SESSION['token'])[0]);
+        $token = $_SESSION['type'];
+        $id = $_SESSION['id'];
         if (isset($_POST['verif_mdp'])){
 
             if ($token == "etudiant"){
@@ -30,8 +30,7 @@
 
 
     function changeInformations($compte, $fichier, $pos){
-        $type = explode(";", $_SESSION['token'])[1];
-        $type = rtrim($type);
+        $type = $_SESSION['type'];
 
         include("./functions.inc.php");
         $log = array();
@@ -44,7 +43,7 @@
 
             if ($_POST['change_id'] != ""){
                 $new_compte = $new_compte . $_POST['change_id'] . ";";
-                $_SESSION['token'] = $_POST['change_id']. ';etudiant';
+                $_SESSION['id'] = $_POST['change_id'];
             }
             else{
                 $new_compte = $new_compte . $compte[0] . ";";

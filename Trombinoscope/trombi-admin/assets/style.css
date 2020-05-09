@@ -278,20 +278,21 @@ body{
 #div_trombi{
 	margin-left: 5%;
 	margin-right: 5%;
-	display: flex;
-	flex-wrap: wrap;
 }
 
 .ligne_trombi{
 	display: block;
 	margin-right: 19px;
-	justify-content: space-around;
+	justify-content: center;
+	text-align: center;
 }
 
 .case_trombi{
 	width: 200px;
 	height: 313px;
-	margin-left: 5%;
+	margin: auto;
+	padding-right: 1%;
+	display: inline-block;
 }
 
 .nom_prenom_etu{

@@ -24,22 +24,24 @@
             </a>
 
             <?php
-                if (isset($_SESSION['id'])){
-                    $fichier = file("./files/administration.csv");
+                if (isset($_SESSION['type'])){
 
-                    for ($k = 0; $k < sizeof($fichier); $k++){
-                        $check_id = explode(";", rtrim($fichier[$k]))[0];
+                    if ($_SESSION['type'] == "administration"){
+                        $fichier = file("./files/administration.csv");
 
-                        $found = false;
-                        if ($_SESSION['id'] == $check_id){
-                            echo "<h1>Bonjour " . $_SESSION['id'] . "</h1>";
-                            $found = true;
+                        for ($k = 0; $k < sizeof($fichier); $k++){
+                            $check_id = explode(";", rtrim($fichier[$k]))[0];
+
+                            $found = false;
+                            if ($_SESSION['id'] == $check_id){
+                                echo "<h1>Bonjour " . $_SESSION['id'] . "</h1>";
+                                $found = true;
+                            }
+                        }
+                        if (!($found)){
+                            header("Location: ./index.php");
                         }
                     }
-                    if (!$found){
-                        header("Location: ./index.php");
-                    }
-
                 }
                 else{
                     header('Location: ./index.php');
