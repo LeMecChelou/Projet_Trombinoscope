@@ -19,7 +19,11 @@
     }
 
 
-    function saveLog($log, $array_files){
+    function saveLog($array_files, $action, $type){
+        $log = array();
+
+        $log['Action'] = $action;
+        $log['Type'] = $type;
         $log['Year'] = intval(date('Y'));
         $log['Month'] = intval(date('m'));
         $log['Day'] = intval(date('d'));

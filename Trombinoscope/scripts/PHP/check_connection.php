@@ -38,10 +38,7 @@
                 $_SESSION['type'] = 'etudiant';
 
                 include("./functions.inc.php");
-                $log = array();
-                $log['Action'] = "Connexion: " . $compte[0];
-                $log['Type'] = "Connexion";
-                saveLog($log, ["../../trombi-etu/files/logs_etu.json"]);
+                saveLog(["../../trombi-etu/files/logs_etu.json"], "Connexion: " . $compte[0], "Connexion");
 
                 header('Location: ../../trombi-etu/etudiant.php');
             }

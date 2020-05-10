@@ -49,10 +49,7 @@
                     return;
                 }
 
-                $log = array();
-                $log['Action'] = "Inscription: " . $_POST['input_id'];
-                $log['Type'] = "Inscription";
-                saveLog($log, ["../../trombi-etu/files/logs_etu.json"]);
+                saveLog(["../../trombi-etu/files/logs_etu.json"], "Inscription: " . $_POST['input_id'], "Inscription");
             }
             else{
                 header("Location: ../../trombi-etu/index.php?error=1.1");

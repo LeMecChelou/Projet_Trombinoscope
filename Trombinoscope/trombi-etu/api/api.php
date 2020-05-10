@@ -55,7 +55,7 @@
     function generateJSON(){
 
         $etudiants = file("../files/etudiants.csv");
-        $filieres = json_decode(file_get_contents("../files/filieres.json"));
+        $filieres = json_decode(file_get_contents("../assets/filieres.json"));
         $data = array();
 
         // Ressort toutes les filières avec les groupes et les étudiants.
@@ -67,6 +67,7 @@
                     $data[$filiere] = getFiliere($etudiants, $groupes, false);
                 }
 
+                saveLog(["../files/logs_api.json", "../files/logs_etu.json"], "Requête 'all'", "API");
                 return json_encode($data);
             }
 
@@ -91,6 +92,8 @@
             foreach ($filieres as $filiere => $groupes){
                 if ($filiere == strtoupper($_GET['filiere'])){
                     $data[$filiere] = getFiliere($etudiants, $groupes, $group_only);
+
+                    saveLog(["../files/logs_api.json", "../files/logs_etu.json"], "Requête 'filiere - grp'", "API");
                     return json_encode($data);
                 }
             }
@@ -106,6 +109,7 @@
                     if ($groupe == strtoupper($_GET['groupe'])){
                         $data[$groupe] = getGroup($etudiants, $groupe);
 
+                        saveLog(["../files/logs_api.json", "../files/logs_etu.json"], "Requête 'groupe'", "API");
                         return json_encode($data);
                     }
                 }
@@ -122,6 +126,8 @@
                     $etudiant = explode(";", rtrim($etudiants[$k]));
                     $data[] = getStudent($etudiant, $k);
                 }
+
+                saveLog(["../files/logs_api.json", "../files/logs_etu.json"], "Requête 'all_etu'", "API");
                 return json_encode($data);
             }
 
@@ -138,6 +144,7 @@
                 if ($_GET['etu'] == $id){
                     $data[] = getStudent($etudiant, $k);
 
+                    saveLog(["../files/logs_api.json", "../files/logs_etu.json"], "Requête 'etu'", "API");
                     return json_encode($data);
                 }
             }
@@ -150,6 +157,8 @@
         if (isset($_GET['log'])){
             if ($_GET['log'] == "1"){
                 $data = json_decode(file_get_contents("../files/logs_etu.json"));
+
+                saveLog(["../files/logs_api.json", "../files/logs_etu.json"], "Requête 'log'", "API");
                 return json_encode(array_reverse($data));
             }
 
@@ -235,19 +244,7 @@
         }
     }
 
-
-    function addLog($request){
-
-        $log = array();
-
-        $log['Action'] = $request;
-        $log['Type'] = 'API';
-
-        include("../../scripts/PHP/functions.inc.php");
-        saveLog($log, ["../files/logs_api.json", "../files/logs_etu.json"]);
-    }
-
-
+    include("../../scripts/PHP/functions.inc.php");
     header('Content-type: application/json');
     // Changer ce header pour mettre le CORS uniquement pour le deuxième site.
     header("Access-Control-Allow-Origin: *");

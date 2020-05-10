@@ -6,10 +6,7 @@
 
         if ($_SESSION['type'] == "etudiant"){
             include("./functions.inc.php");
-            $log = array();
-            $log['Action'] = "Déconnexion: " . $_SESSION['id'];
-            $log['Type'] = "Deconnexion";
-            saveLog($log, ["../../trombi-etu/files/logs_etu.json"]);
+            saveLog(["../../trombi-etu/files/logs_etu.json"], "Déconnexion: " . $_SESSION['id'], "Deconnexion");
         }
 
         $type = $_SESSION['type'];
